@@ -34,15 +34,22 @@ for _, player in ipairs(players) do
 end
 
 _G.autoFarm = false
+_G.autoReb = false
+function autoRebirth()
+    while _G.AutoRebirth == true do
+    game:GetService("ReplicatedStorage"):WaitForChild("RebirthEvent"):FireServer()
+    wait(3)
+    end
+ end
 
 function auto_Farm()
     while _G.autoFarm == true do
         local humanoid = Character:WaitForChild("Humanoid")
         humanoid:Move(Vector3.new(0, 0, 0))
         humanoid:Move(Vector3.new(0, 0, 0))
-        wait(.000000001)
+        wait(.0000001)
         game:GetService("Workspace").Wins.World14.CFrame = HumanoidRootPart.CFrame
-        wait(.000000001)
+        wait(.0000001)
     end
 end
 
@@ -65,7 +72,14 @@ Auto:AddToggle({
 	end    
 })
 
-
+Auto:AddToggle({
+	Name = "AutoFarm",
+	Default = false,
+	Callback = function(Value)
+		_G.autoReb = Value
+        autoRebirth()
+	end    
+})
 local TPTab = Window:MakeTab({
     Name = "Teleport",
     Icon = "rbxassetid://4483345998",
