@@ -37,11 +37,7 @@ _G.autoFarm = false
 
 function auto_Farm()
     while _G.autoFarm == true do
-        local humanoid = Character:WaitForChild("Humanoid")
-        humanoid:Move(Vector3.new(0, 0, 0))
-        humanoid:Move(Vector3.new(0, 0, 0))
-        wait(.00001)
-        game:GetService("Workspace").Wins.World14.CFrame = HumanoidRootPart.CFrame
+        HumanoidRootPart.CFrame=game:GetService("Workspace").Wins.World14.CFrame 
         wait(.00001)
     end
 end
