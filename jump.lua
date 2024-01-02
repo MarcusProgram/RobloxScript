@@ -37,7 +37,7 @@ _G.autoFarm = false
 
 function auto_Farm()
     while _G.autoFarm == true do
-        HumanoidRootPart.CFrame = game:GetService("Workspace").Wins.World14.CFrame
+        game:GetService("Workspace").Wins.World14.CFrame = HumanoidRootPart.CFrame
         wait(.00001)
     end
 end
