@@ -348,13 +348,3 @@ MiscTab:AddDropdown({
 })
 OrionLib.Init()
 
-
-
-
-
-local args = {
-    [1] = "MaxCraft",
-    [2] = false
-}
-
-game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("PetActionRequest"):InvokeServer(unpack(args))
