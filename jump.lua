@@ -1,5 +1,19 @@
 -- game https://www.roblox.com/games/11063612131/Every-Second-You-Get-1-Jump-Power
 
+--
+--███╗░░░███╗░█████╗░██████╗░██╗░░░██╗░█████╗░░██████╗
+--████╗░████║██╔══██╗██╔══██╗██║░░░██║██╔══██╗██╔════╝
+--██╔████╔██║███████║██████╔╝██║░░░██║██║░░╚═╝╚█████╗░
+--██║╚██╔╝██║██╔══██║██╔══██╗██║░░░██║██║░░██╗░╚═══██╗
+--██║░╚═╝░██║██║░░██║██║░░██║╚██████╔╝╚█████╔╝██████╔╝
+--╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
+
+
+
+
+
+
+
 for i = 1, 100 do
     print("Created by Marcus")
 end
@@ -113,19 +127,14 @@ Auto:AddDropdown({
         else
             _G.autoOpen = true
             autoFarmEggs(value)
+            game:GetService("StarterGui"):SetCore("SendNotification",{
+                Title = "WARNING",
+                Text = "YOU HAVE TO STAND NEXT TO THE EGG",
+                Icon = "rbxassetid://4483345998"
+            })
         end
     end
 })
-
-
-
-
-
-
-
-
-
-
 
 
 
