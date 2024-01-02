@@ -37,8 +37,7 @@ _G.autoFarm = false
 
 function auto_Farm()
     while _G.autoFarm == true do
-        game:GetService("Workspace").Wins.World14.CFrame = HumanoidRootPart.CFrame
-        HumanoidRootPart.CFrame = CFrame.new(56347.9727, 0.396343827, -109.871643, -0.720182836, 1.0249015e-08, 0.693784297, -3.89964327e-08, 1, -5.52528725e-08, -0.693784297, -6.6847285e-08, -0.720182836)
+        HumanoidRootPart.CFrame = game:GetService("Workspace").Wins.World14.CFrame
         wait(.00001)
     end
 end
