@@ -82,9 +82,9 @@ function auto_Farm()
     while _G.autoFarm == true do
         for i = 1, 360, 5 do
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(i), 0)
-            wait(.000001)
+            wait(.00000000001)
             game:GetService("Workspace").Wins.World14.CFrame = HumanoidRootPart.CFrame
-            wait(.000001)
+            wait(.00000000001)
         end
         
     end
