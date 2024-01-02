@@ -35,6 +35,18 @@ end
 
 _G.autoFarm = false
 _G.autoReb = false
+_G.autoOpen = false
+
+
+function autoFarmEggs(value)
+    if _G.autoOpen == true then
+    local args = {
+        [1] = value,
+        [2] = "Single"
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("EggOpened"):InvokeServer(unpack(args))    
+end
+end
 function autoRebirth()
     while _G.autoReb == true do
         game:GetService("ReplicatedStorage"):WaitForChild("RebirthEvent"):FireServer()
@@ -46,9 +58,9 @@ function auto_Farm()
     while _G.autoFarm == true do
         for i = 1, 360, 5 do
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(i), 0)
-            wait(.0001)
+            wait(.000001)
             game:GetService("Workspace").Wins.World14.CFrame = HumanoidRootPart.CFrame
-            wait(.0001)
+            wait(.000001)
         end
         
     end
@@ -59,7 +71,9 @@ local Auto = Window:MakeTab({
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
-
+Auto:AddSection({
+	Name = "Auto:"
+})
 Auto:AddToggle({
 	Name = "Auto Farm",
 	Default = false,
@@ -76,6 +90,52 @@ Auto:AddToggle({
 		_G.autoReb = Value
         autoRebirth()
 	end    
+})
+
+
+
+Auto:AddDropdown({
+    Name = "Open Eggs",
+    Default = "NO EGG",
+    Options = {"NO EGG","Noob","Starter","Rare","Pro","Epic","Legendary","Mythical","Godly","Dark","Void","Desert","Forest","Candy","Steampunk","Beach","Heaven"},
+    Callback = function(value)
+        if value == "NO EGG" then
+            _G.autoOpen = false
+        else
+            _G.autoOpen = true
+            autoFarmEggs(value)
+        end
+    end
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local gam = Auto:AddSection({
+	Name = "Game:"
+})
+Auto:AddButton({
+	Name = "Collect All Gifts",
+	Callback = function()
+        for i = 1,8 do
+            local args = {
+                [1] = "TimeGift",
+                [2] = i
+            }
+            game:GetService("ReplicatedStorage"):WaitForChild("Recv"):InvokeServer(unpack(args))
+            wait(0.5)
+        end
+  	end    
 })
 local TPTab = Window:MakeTab({
     Name = "Teleport",
@@ -265,3 +325,10 @@ OrionLib.Init()
 
 
 
+
+local args = {
+    [1] = "MaxCraft",
+    [2] = false
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("PetActionRequest"):InvokeServer(unpack(args))
