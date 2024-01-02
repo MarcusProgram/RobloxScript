@@ -43,10 +43,11 @@ function autoRebirth()
  end
 
 function auto_Farm()
+    local torso = Character:WaitForChild("Torso")
+    local rotateSpeed = 500
     while _G.autoFarm == true do
-        local humanoid = Character:WaitForChild("Humanoid")
-        humanoid:Move(Vector3.new(0, 0, 0))
-        humanoid:Move(Vector3.new(0, 0, 0))
+        Humanoid.WalkSpeed = 0
+        torso.CFrame = torso.CFrame * CFrame.Angles(0, math.rad(rotateSpeed), 0)
         wait(.0001)
         game:GetService("Workspace").Wins.World14.CFrame = HumanoidRootPart.CFrame
         wait(.0001)
@@ -224,8 +225,16 @@ MiscTab:AddButton({
 MiscTab:AddButton({
 	Name = "Anti AFK",
 	Callback = function()
-        loadstring(game:HttpGet("https://pastebin.com/raw/sDXcYFhR",true))()
-  	end    
+        repeat wait() until game:IsLoaded()
+        game:GetService("Players").LocalPlayer.Idled:connect(function()
+            game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+        end)
+        game:GetService("StarterGui"):SetCore("SendNotification",{
+            Title = "ANTI AFK",
+            Text = "ANTI AFK ON",
+            Icon = "rbxassetid://4483345998"
+        })
+  	end
 })
 
 local Tel = MiscTab:AddSection({
