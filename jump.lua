@@ -36,26 +36,16 @@ end
 _G.autoFarm = false
 _G.autoReb = false
 _G.autoOpen = false
-_G.autoCraftA = false
 
-function autoCraft()
-    while _G.autoCraftA == true do
-        local args = {
-            [1] = "MaxCraft",
-            [2] = false
-        }
-        game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("PetActionRequest"):InvokeServer(unpack(args))
-        wait(5)
-    end
-end
-function autoFarmEggs()
+
+function autoFarmEggs(value)
     while _G.autoOpen == true do
     local args = {
-        [1] = "Heaven",
+        [1] = value,
         [2] = "Single"
     }
-    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("EggOpened"):InvokeServer(unpack(args)) 
-end   
+    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("EggOpened"):InvokeServer(unpack(args))    
+end
 end
 function autoRebirth()
     while _G.autoReb == true do
@@ -102,15 +92,31 @@ Auto:AddToggle({
 	end 
 })
 
--- было очень лень делать для всех яиц
-Auto:AddToggle({
-	Name = "Auto Open Last EGG",
-	Default = false,
-	Callback = function(Value)
-		_G.autoOpen = Value
-        autoFarmEggs()
-	end 
+
+Auto:AddDropdown({
+    Name = "Open Eggs",
+    Default = "NO EGG",
+    Options = {"NO EGG","Noob","Starter","Rare","Pro","Epic","Legendary","Mythical","Godly","Dark","Void","Desert","Forest","Candy","Steampunk","Beach","Heaven"},
+    Callback = function(value)
+        if value == "NO EGG" then
+            _G.autoOpen = false
+        else
+            _G.autoOpen = true
+            autoFarmEggs(value)
+        end
+    end
 })
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -128,15 +134,7 @@ Auto:AddButton({
             game:GetService("ReplicatedStorage"):WaitForChild("Recv"):InvokeServer(unpack(args))
             wait(0.5)
         end
-    end    
-})
-Auto:AddToggle({
-	Name = "Craft All",
-	Default = false,
-	Callback = function(Value)
-		_G.autoCraftA = Value
-        autoCraft()
-	end 
+  	end    
 })
 local TPTab = Window:MakeTab({
     Name = "Teleport",
@@ -327,3 +325,9 @@ OrionLib.Init()
 
 
 
+local args = {
+    [1] = "MaxCraft",
+    [2] = false
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("PetActionRequest"):InvokeServer(unpack(args))
