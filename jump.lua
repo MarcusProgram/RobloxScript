@@ -39,13 +39,13 @@ _G.autoOpen = false
 
 
 function autoFarmEggs(value)
-    if _G.autoOpen == true then
+    while _G.autoOpen == true do
     local args = {
         [1] = value,
         [2] = "Single"
     }
-    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("EggOpened"):InvokeServer(unpack(args))    
-end
+    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("EggOpened"):InvokeServer(unpack(args)) 
+end   
 end
 function autoRebirth()
     while _G.autoReb == true do
@@ -89,10 +89,8 @@ Auto:AddToggle({
 	Callback = function(Value)
 		_G.autoReb = Value
         autoRebirth()
-	end    
+	end 
 })
-
-
 
 Auto:AddDropdown({
     Name = "Open Eggs",
