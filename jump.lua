@@ -36,8 +36,18 @@ end
 _G.autoFarm = false
 _G.autoReb = false
 _G.autoOpen = false
+_G.autoCraftA = false
 
-
+function autoCraft()
+    while _G.autoCraftA == true do
+        local args = {
+            [1] = "MaxCraft",
+            [2] = false
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("PetActionRequest"):InvokeServer(unpack(args))
+        wait(5)
+    end
+end
 function autoFarmEggs(value)
     while _G.autoOpen == true do
     local args = {
@@ -135,6 +145,14 @@ Auto:AddButton({
             wait(0.5)
         end
   	end    
+})
+Auto:AddToggle({
+	Name = "Craft All",
+	Default = false,
+	Callback = function(Value)
+		_G.autoCraftA = Value
+        autoCraft()
+	end 
 })
 local TPTab = Window:MakeTab({
     Name = "Teleport",
