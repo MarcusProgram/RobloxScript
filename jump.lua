@@ -43,14 +43,14 @@ function autoRebirth()
  end
 
 function auto_Farm()
-    local torso = Character:WaitForChild("Torso")
-    local rotateSpeed = 500
     while _G.autoFarm == true do
-        Humanoid.WalkSpeed = 0
-        torso.CFrame = torso.CFrame * CFrame.Angles(0, math.rad(rotateSpeed), 0)
-        wait(.0001)
-        game:GetService("Workspace").Wins.World14.CFrame = HumanoidRootPart.CFrame
-        wait(.0001)
+        for i = 1, 360, 5 do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(i), 0)
+            wait(.0001)
+            game:GetService("Workspace").Wins.World14.CFrame = HumanoidRootPart.CFrame
+            wait(.0001)
+        end
+        
     end
 end
 
