@@ -59,12 +59,8 @@ local Auto = Window:MakeTab({
     PremiumOnly = false
 })
 
-local AutoFarm = Auto:AddSection({
-	Name = "Auto Farm"
-})
-
 Auto:AddToggle({
-	Name = "AutoFarm",
+	Name = "Auto Farm",
 	Default = false,
 	Callback = function(Value)
 		_G.autoFarm = Value
@@ -73,7 +69,7 @@ Auto:AddToggle({
 })
 
 Auto:AddToggle({
-	Name = "AutoFarm",
+	Name = "Auto Rebirth",
 	Default = false,
 	Callback = function(Value)
 		_G.autoReb = Value
