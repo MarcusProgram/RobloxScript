@@ -1,3 +1,5 @@
+-- game https://www.roblox.com/games/11063612131/Every-Second-You-Get-1-Jump-Power
+
 for i = 1, 100 do
     print("Created by Marcus")
 end
@@ -21,6 +23,15 @@ local LocalPlayer = Players.LocalPlayer
 local Character = LocalPlayer.Character
 local HumanoidRootPart = Character.HumanoidRootPart
 local Humanoid = Character.Humanoid
+
+local plrs = game.Players
+
+local playerNames = {}
+local players = plrs:GetPlayers()
+
+for _, player in ipairs(players) do
+    table.insert(playerNames, player.Name)
+end
 
 _G.autoFarm = false
 
@@ -90,9 +101,56 @@ TPTab:AddDropdown({
     end
 })
 
+TPTab:AddButton({
+	Name = "Shop",
+	Callback = function()
+        HumanoidRootPart.CFrame = game:GetService("Workspace").Shop.Part.CFrame
+  	end    
+})
+
+TPTab:AddButton({
+	Name = "Trails",
+	Callback = function()
+        HumanoidRootPart.CFrame = game:GetService("Workspace").Trails.Part.CFrame
+  	end    
+})
+
+TPTab:AddButton({
+	Name = "Wheel",
+	Callback = function()
+        HumanoidRootPart.CFrame = game:GetService("Workspace").WheelPart.CFrame
+  	end    
+})
+
+
+TPTab:AddButton({
+	Name = "Secret",
+	Callback = function()
+        HumanoidRootPart.CFrame = game:GetService("Workspace").Secret.Model.Part.CFrame
+  	end    
+})
+
+local Race = TPTab:AddSection({
+	Name = "Race"
+})
+
+TPTab:AddButton({
+	Name = "Start Part",
+	Callback = function()
+        HumanoidRootPart.CFrame = game:GetService("Workspace").RaceModel.StartPart.CFrame
+  	end    
+})
+
+TPTab:AddButton({
+	Name = "Winner Part",
+	Callback = function()
+        HumanoidRootPart.CFrame = game:GetService("Workspace").RaceModel.WinnerPart.CFrame
+  	end    
+})
+
 
 local Player = Window:MakeTab({
-    Name = "Misc",
+    Name = "Player",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -154,6 +212,30 @@ MiscTab:AddButton({
 	Callback = function()
         loadstring(game:HttpGet("https://pastebin.com/raw/sDXcYFhR",true))()
   	end    
+})
+
+local Tel = MiscTab:AddSection({
+	Name = "Teleport:"
+})
+
+
+
+MiscTab:AddDropdown({
+    Name = "Players",
+    Default = playerNames[1] or "No Players",
+    Options = playerNames,
+    Callback = function(selectedplrName)
+        local targetPlayer = plrs:FindFirstChild(selectedplrName)
+        if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            local targetPosition = targetPlayer.Character.HumanoidRootPart.Position
+            local localPlayerRoot = plrs.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+            
+            if localPlayerRoot then
+                localPlayerRoot.CFrame = CFrame.new(targetPosition)
+            end
+        end
+        print(selectedplrName)
+    end    
 })
 OrionLib.Init()
 
