@@ -7,7 +7,7 @@
 --██║╚██╔╝██║██╔══██║██╔══██╗██║░░░██║██║░░██╗░╚═══██╗
 --██║░╚═╝░██║██║░░██║██║░░██║╚██████╔╝╚█████╔╝██████╔╝
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
-
+print("что то не то")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local Character = LocalPlayer.Character
@@ -25,7 +25,6 @@ Humanoid:TakeDamage(100)
 for i = 1, 100 do
     print("Created by Marcus")
 end
-print("что то не то")
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "Created by Marucs",
     Text = "Discord marcusov1",
