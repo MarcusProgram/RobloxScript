@@ -196,11 +196,7 @@ TPTab:AddDropdown({
     Callback = function(value)
         local selectedWorldCFrame = worldCFrameMap[value]
         if selectedWorldCFrame then
-            local targetPosition = selectedWorldCFrame.Position
-            local localPlayerRoot = plrs.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-            if localPlayerRoot then
-                localPlayerRoot.CFrame = CFrame.new(targetPosition)
-            end
+            HumanoidRootPart.CFrame = CFrame.new(selectedWorldCFrame.Position)
         end
     end
 })
