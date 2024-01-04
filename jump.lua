@@ -298,7 +298,11 @@ Player:AddButton({
 Player:AddButton({
 	Name = "Copy Player",
 	Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Invooker11/Outfit/main/OutfitCopier.lua", true))()
+        game:GetService("StarterGui"):SetCore("SendNotification",{
+            Title = "soon",
+            Text = "скрипт делается",
+            Icon = "rbxassetid://4483345998"
+        })
   	end
 })
 
