@@ -7,7 +7,9 @@
 --██║╚██╔╝██║██╔══██║██╔══██╗██║░░░██║██║░░██╗░╚═══██╗
 --██║░╚═╝░██║██║░░██║██║░░██║╚██████╔╝╚█████╔╝██████╔╝
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
-game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
+
+
+--game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local Character = LocalPlayer.Character
@@ -226,7 +228,7 @@ TPTab:AddButton({
 TPTab:AddButton({
 	Name = "Secret",
 	Callback = function()
-        HumanoidRootPart.CFrame = game:GetService("Workspace").Secret.Teleport.CFrame
+        HumanoidRootPart.CFrame = game:GetService("Workspace").World1.Secret
   	end    
 })
 
