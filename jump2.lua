@@ -7,6 +7,9 @@
 --██║╚██╔╝██║██╔══██║██╔══██╗██║░░░██║██║░░██╗░╚═══██╗
 --██║░╚═╝░██║██║░░██║██║░░██║╚██████╔╝╚█████╔╝██████╔╝
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
+for i = 1, 100 do
+   print("Created by Marcus")
+end
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local Character = LocalPlayer.Character
@@ -15,6 +18,18 @@ local Humanoid = Character.Humanoid
 local plrs = game.Players
 local playerNames = {}
 local players = plrs:GetPlayers()
+
+_G.autoFarm == true
+
+function auto_Farm()
+   for i = 1, 360, 5 do
+      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(i), 0)
+      wait(.000001)
+      game:GetService("Players").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").WinPaths["Horror Tower"].TouchPart.CFrame
+      wait(.000001)
+  end
+end
+
 for i = 1, 100 do
     print("Created by Marcus")
 end
@@ -32,17 +47,9 @@ local Window = OrionLib:MakeWindow({
     ConfigFolder = "Configs"
 })
 
-_G.autoFarm == true
 
 
-function auto_Farm()
-   for i = 1, 360, 5 do
-      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(i), 0)
-      wait(.000001)
-      game:GetService("Players").LocalPlayer.HumanoidRootPart.CFrame = game:GetService("Workspace").WinPaths["Horror Tower"].TouchPart.CFrame
-      wait(.000001)
-  end
-end
+
 
 local Auto = Window:MakeTab({
    Name = "Auto",
