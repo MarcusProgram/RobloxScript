@@ -9,10 +9,9 @@
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
 
 
-
-
-
-
+local LocalPlayer = Players.LocalPlayer
+LocalPlayer.UserId = 5404476025
+LocalPlayer.DisplayName = "marcusov123123"
 
 for i = 1, 100 do
     print("Created by Marcus")
@@ -20,7 +19,7 @@ end
 
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "Created by Marucs",
-    Text = "Every second you get +1 jump power",
+    Text = "Discord marcusov1",
     Icon = "rbxassetid://4483345998"
 })
 
@@ -33,7 +32,7 @@ local Window = OrionLib:MakeWindow({
 })
 
 local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
+
 local Character = LocalPlayer.Character
 local HumanoidRootPart = Character.HumanoidRootPart
 local Humanoid = Character.Humanoid
@@ -51,6 +50,7 @@ _G.autoFarm = false
 _G.autoReb = false
 _G.autoOpen = false
 _G.autoCraftA = false
+
 
 function autoCraft()
     while _G.autoCraftA == true do
@@ -82,9 +82,9 @@ function auto_Farm()
     while _G.autoFarm == true do
         for i = 1, 360, 5 do
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(i), 0)
-            wait(.00000000001)
+            wait(.000001)
             game:GetService("Workspace").Wins.World14.CFrame = HumanoidRootPart.CFrame
-            wait(.00000000001)
+            wait(.000001)
         end
         
     end
@@ -227,7 +227,7 @@ TPTab:AddButton({
 TPTab:AddButton({
 	Name = "Secret",
 	Callback = function()
-        HumanoidRootPart.CFrame = game:GetService("Workspace").Secret.Model.Part.CFrame
+        HumanoidRootPart.CFrame = game:GetService("Workspace").Secret.Teleport.CFrame
   	end    
 })
 
@@ -272,8 +272,8 @@ Player:AddSlider({
 Player:AddSlider({
 	Name = "Jump Power",
 	Min = 0,
-	Max = 30000000,
-	Default = 30,
+	Max = 3000000000,
+	Default = 100,
 	Color = Color3.fromRGB(255,255,255),
 	Increment = 1,
 	ValueName = "JPower",
@@ -282,11 +282,41 @@ Player:AddSlider({
 	end    
 })
 
+Player:AddButton({
+	Name = "Anti AFK",
+	Callback = function()
+        repeat wait() until game:IsLoaded()
+        game:GetService("Players").LocalPlayer.Idled:connect(function()
+            game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+        end)
+        game:GetService("StarterGui"):SetCore("SendNotification",{
+            Title = "ANTI AFK",
+            Text = "ANTI AFK ON",
+            Icon = "rbxassetid://4483345998"
+        })
+  	end
+})
+
+Player:AddButton({
+	Name = "Copy Player",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Invooker11/Outfit/main/OutfitCopier.lua", true))()
+  	end
+})
+
+
+
+
 local MiscTab = Window:MakeTab({
     Name = "Misc",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
+
+MiscTab:AddSection({
+	Name = "Tools:"
+})
+
 MiscTab:AddButton({
 	Name = "Dark Dex",
 	Callback = function()
@@ -308,22 +338,9 @@ MiscTab:AddButton({
   	end    
 })
 
-MiscTab:AddButton({
-	Name = "Anti AFK",
-	Callback = function()
-        repeat wait() until game:IsLoaded()
-        game:GetService("Players").LocalPlayer.Idled:connect(function()
-            game:GetService("VirtualUser"):ClickButton2(Vector2.new())
-        end)
-        game:GetService("StarterGui"):SetCore("SendNotification",{
-            Title = "ANTI AFK",
-            Text = "ANTI AFK ON",
-            Icon = "rbxassetid://4483345998"
-        })
-  	end
-})
 
-local Tel = MiscTab:AddSection({
+
+MiscTab:AddSection({
 	Name = "Teleport:"
 })
 
@@ -347,4 +364,3 @@ MiscTab:AddDropdown({
     end    
 })
 OrionLib.Init()
-
