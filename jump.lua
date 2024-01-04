@@ -17,7 +17,6 @@ local plrs = game.Players
 
 local playerNames = {}
 local players = plrs:GetPlayers()
-Humanoid:TakeDamage(100)
 
 for i = 1, 100 do
     print("Created by Marcus")
