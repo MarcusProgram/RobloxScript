@@ -7,19 +7,21 @@
 --██║╚██╔╝██║██╔══██║██╔══██╗██║░░░██║██║░░██╗░╚═══██╗
 --██║░╚═╝░██║██║░░██║██║░░██║╚██████╔╝╚█████╔╝██████╔╝
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
-while wait(5) do
-	local Players = game:GetService("Players")
-	local LocalPlayer = Players.LocalPlayer
-	local Character = LocalPlayer.Character
-	local HumanoidRootPart = Character.HumanoidRootPart
-	local Humanoid = Character.Humanoid
-	
-	
-	local plrs = game.Players
-	
-	local playerNames = {}
-	local players = plrs:GetPlayers()
-end
+game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character
+local HumanoidRootPart = Character.HumanoidRootPart
+local Humanoid = Character.Humanoid
+
+
+
+
+local plrs = game.Players
+
+local playerNames = {}
+local players = plrs:GetPlayers()
+
 for i = 1, 100 do
     print("Created by Marcus")
 end
@@ -36,7 +38,7 @@ local Window = OrionLib:MakeWindow({
     SaveConfig = true,
     ConfigFolder = "Configs"
 })
-
+character:WaitForChild("NameTag").Transparency = 1
 
 
 for _, player in ipairs(players) do
@@ -167,20 +169,20 @@ local TPTab = Window:MakeTab({
 })
 
 local worldCFrameMap = {
-    World1 = game:GetService("Workspace").World1.BaseEarth.CFrame,
-    World2 = game:GetService("Workspace").World2.BaseMoonZone.CFrame,
-    World3 = game:GetService("Workspace").World3.BaseLavaZone.CFrame,
-    World4 = game:GetService("Workspace").World4.BaseIceZone.CFrame,
-    World5 = game:GetService("Workspace").World5.BaseFlowerZone.CFrame,
-    World6 = game:GetService("Workspace").World6.BaseSnowZone.CFrame,
-    World7 = game:GetService("Workspace").World7.BaseDarkZone.CFrame,
-    World8 = game:GetService("Workspace").World8.BaseVoidZone.CFrame,
-    World9 = game:GetService("Workspace").World9.BaseDesertZone.CFrame,
-    World10 = game:GetService("Workspace").World10.BaseForestZone.CFrame,
-    World11 = game:GetService("Workspace").World11.BaseCandyZone.CFrame,
-    World12 = game:GetService("Workspace").World12.BaseSteampunkZone.CFrame,
-    World13 = game:GetService("Workspace").World13.BaseBeachZone.CFrame,
-    World14 = game:GetService("Workspace").World14.BaseHeavenZone.CFrame,
+    World1 = game:GetService("Workspace").World1.BaseEarth,
+    World2 = game:GetService("Workspace").World2.BaseMoonZone,
+    World3 = game:GetService("Workspace").World3.BaseLavaZone,
+    World4 = game:GetService("Workspace").World4.BaseIceZone,
+    World5 = game:GetService("Workspace").World5.BaseFlowerZone,
+    World6 = game:GetService("Workspace").World6.BaseSnowZone,
+    World7 = game:GetService("Workspace").World7.BaseDarkZone,
+    World8 = game:GetService("Workspace").World8.BaseVoidZone,
+    World9 = game:GetService("Workspace").World9.BaseDesertZone,
+    World10 = game:GetService("Workspace").World10.BaseForestZone,
+    World11 = game:GetService("Workspace").World11.BaseCandyZone,
+    World12 = game:GetService("Workspace").World12.BaseSteampunkZone,
+    World13 = game:GetService("Workspace").World13.BaseBeachZone,
+    World14 = game:GetService("Workspace").World14.BaseHeavenZone,
 }
 
 local dropdownOptions = {
@@ -194,7 +196,7 @@ TPTab:AddDropdown({
     Callback = function(value)
         local selectedWorldCFrame = worldCFrameMap[value]
         if selectedWorldCFrame then
-            HumanoidRootPart.CFrame = selectedWorldCFrame
+            HumanoidRootPart.CFrame = CFrame.new(selectedWorldCFrame.Position)
         end
     end
 })
