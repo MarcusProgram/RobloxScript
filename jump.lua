@@ -40,8 +40,6 @@ local Window = OrionLib:MakeWindow({
     SaveConfig = true,
     ConfigFolder = "Configs"
 })
-character:WaitForChild("NameTag").Transparency = 1
-
 
 for _, player in ipairs(players) do
     table.insert(playerNames, player.Name)
