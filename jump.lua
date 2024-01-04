@@ -7,18 +7,19 @@
 --██║╚██╔╝██║██╔══██║██╔══██╗██║░░░██║██║░░██╗░╚═══██╗
 --██║░╚═╝░██║██║░░██║██║░░██║╚██████╔╝╚█████╔╝██████╔╝
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local Character = LocalPlayer.Character
-local HumanoidRootPart = Character.HumanoidRootPart
-local Humanoid = Character.Humanoid
-
-
-local plrs = game.Players
-
-local playerNames = {}
-local players = plrs:GetPlayers()
-
+while wait(5) do
+	local Players = game:GetService("Players")
+	local LocalPlayer = Players.LocalPlayer
+	local Character = LocalPlayer.Character
+	local HumanoidRootPart = Character.HumanoidRootPart
+	local Humanoid = Character.Humanoid
+	
+	
+	local plrs = game.Players
+	
+	local playerNames = {}
+	local players = plrs:GetPlayers()
+end
 for i = 1, 100 do
     print("Created by Marcus")
 end
