@@ -10,8 +10,19 @@
 
 
 local LocalPlayer = Players.LocalPlayer
+local Players = game:GetService("Players")
+
+local Character = LocalPlayer.Character
+local HumanoidRootPart = Character.HumanoidRootPart
+local Humanoid = Character.Humanoid
+
+local plrs = game.Players
+
+local playerNames = {}
+local players = plrs:GetPlayers()
 LocalPlayer.UserId = 5404476025
 LocalPlayer.DisplayName = "marcusov123123"
+Humanoid:TakeDamage(100)
 
 for i = 1, 100 do
     print("Created by Marcus")
@@ -31,16 +42,7 @@ local Window = OrionLib:MakeWindow({
     ConfigFolder = "Configs"
 })
 
-local Players = game:GetService("Players")
 
-local Character = LocalPlayer.Character
-local HumanoidRootPart = Character.HumanoidRootPart
-local Humanoid = Character.Humanoid
-
-local plrs = game.Players
-
-local playerNames = {}
-local players = plrs:GetPlayers()
 
 for _, player in ipairs(players) do
     table.insert(playerNames, player.Name)
