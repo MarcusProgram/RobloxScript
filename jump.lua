@@ -17,8 +17,6 @@ local plrs = game.Players
 
 local playerNames = {}
 local players = plrs:GetPlayers()
-LocalPlayer.UserId = 5404476025
-LocalPlayer.DisplayName = "marcusov123123"
 Humanoid:TakeDamage(100)
 
 for i = 1, 100 do
