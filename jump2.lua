@@ -30,9 +30,6 @@ function auto_Farm()
   end
 end
 
-for i = 1, 100 do
-    print("Created by Marcus")
-end
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "Created by Marucs",
     Text = "Discord marcusov1",
@@ -156,25 +153,3 @@ MiscTab:AddButton({
   	end    
 })
 
-MiscTab:AddSection({
-	Name = "Teleport:"
-})
-
-MiscTab:AddDropdown({
-    Name = "Players",
-    Default = playerNames[1] or "No Players",
-    Options = playerNames,
-    Callback = function(selectedplrName)
-        local targetPlayer = plrs:FindFirstChild(selectedplrName)
-        if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-            local targetPosition = targetPlayer.Character.HumanoidRootPart.Position
-            local localPlayerRoot = plrs.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-            
-            if localPlayerRoot then
-                localPlayerRoot.CFrame = CFrame.new(targetPosition)
-            end
-        end
-        print(selectedplrName)
-    end    
-})
-OrionLib.Init()
