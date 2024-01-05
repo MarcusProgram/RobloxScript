@@ -122,11 +122,6 @@ Player:AddSlider({
 	end    
 })
 
-
-Player:AddSection({
-	Name = "Health:"
-})
-
 Player:AddSlider({
 	Name = "Max Health",
 	Min = 0,
