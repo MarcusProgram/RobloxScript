@@ -47,11 +47,7 @@ _G.autoFarm = false
 
 function auto_Farm()
     while _G.autoFarm == true do
-      for i = 1, 360, 5 do
-         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(i), 0)
-         wait(.0001)
-         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").WinPaths["Horror Tower"].TouchPart.CFrame
-     end
+      game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").WinPaths["Horror Tower"].TouchPart.CFrame
      wait(2)
     end
 end
