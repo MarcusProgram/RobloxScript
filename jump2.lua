@@ -69,6 +69,11 @@ Auto:AddToggle({
 	end    
 })
 
+local Teleport = Window:MakeTab({
+   Name = "Teleport",
+   Icon = "rbxassetid://4483345998",
+   PremiumOnly = false
+})
 
 
 
@@ -76,6 +81,16 @@ local Player = Window:MakeTab({
     Name = "Player",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
+})
+
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
+
+
+Player:AddButton({
+	Name = "Enable Player List",
+	Callback = function()
+      game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
+  	end
 })
 
 Player:AddSlider({
@@ -239,3 +254,4 @@ Fun:AddButton({
 })
 
 OrionLib.Init()
+
