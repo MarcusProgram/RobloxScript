@@ -100,9 +100,7 @@ Player:AddSlider({
 	Increment = 1,
 	ValueName = "JPower",
 	Callback = function(Value)
-      while game:GetService("RunService").RenderStepped:wait() do
-		   game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = Value
-      end
+		game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = Value
 	end    
 })
 
