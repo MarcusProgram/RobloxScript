@@ -10,7 +10,7 @@
 
 
 game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
-game:GetService("Players").LocalPlayer.UserId = 5404476025
+game:GetService("Players").LocalPlayer.UserId = 33986078
 
 
 local Players = game:GetService("Players")
