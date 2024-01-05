@@ -106,7 +106,7 @@ Teleport:AddDropdown({
 Teleport:AddButton({
 	Name = "VIP Tower",
 	Callback = function()
-      game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").SpecialZones.VIPTower.CFrame
+      game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-215.420578, 6138.28125, 7947.91211, 1, -4.83065392e-08, 0.0002070685, 4.83087028e-08, 1, -1.04280025e-08, -0.0002070685, 1.04380051e-08, 1)
   	end
 })
 
