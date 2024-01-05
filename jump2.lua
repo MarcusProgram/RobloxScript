@@ -87,7 +87,7 @@ Player:AddSlider({
 	Increment = 1,
 	ValueName = "Speed",
 	Callback = function(Value)
-		Humanoid.WalkSpeed = Value
+		game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = Value
 	end    
 })
 
@@ -100,8 +100,44 @@ Player:AddSlider({
 	Increment = 1,
 	ValueName = "JPower",
 	Callback = function(Value)
-		Humanoid.JumpPower = Value
+      while game:GetService("RunService").RenderStepped:wait() do
+		   game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = Value
+      end
 	end    
+})
+
+MiscTab:AddSection({
+	Name = "Health:"
+})
+
+Player:AddSlider({
+	Name = "Max Health",
+	Min = 0,
+	Max = 1000,
+	Default = 100,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Mhealth",
+	Callback = function(Value)
+		   game:GetService("Players").LocalPlayer.Character.Humanoid.MaxHealth = Value
+	end    
+})
+Player:AddSlider({
+	Name = "Health",
+	Min = 0,
+	Max = 1000,
+	Default = 100,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Health",
+	Callback = function(Value)
+		game:GetService("Players").LocalPlayer.Character.Humanoid.Health = Value
+	end    
+})
+
+
+MiscTab:AddSection({
+	Name = "_______________"
 })
 
 Player:AddButton({
