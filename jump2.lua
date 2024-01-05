@@ -1,4 +1,4 @@
--- game https://www.roblox.com/games/9834528893/1-Jump-Every-Second
+-- game  https://www.roblox.com/games/9834528893/1-Jump-Every-Second
 
 --
 --███╗░░░███╗░█████╗░██████╗░██╗░░░██╗░█████╗░░██████╗
@@ -7,29 +7,23 @@
 --██║╚██╔╝██║██╔══██║██╔══██╗██║░░░██║██║░░██╗░╚═══██╗
 --██║░╚═╝░██║██║░░██║██║░░██║╚██████╔╝╚█████╔╝██████╔╝
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
-for i = 1, 100 do
-   print("Created by Marcus")
-end
+
+
+--game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local Character = LocalPlayer.Character
 local HumanoidRootPart = Character.HumanoidRootPart
 local Humanoid = Character.Humanoid
+
 local plrs = game.Players
+
 local playerNames = {}
 local players = plrs:GetPlayers()
 
-_G.autoFarm == true
-
-function auto_Farm()
-   for i = 1, 360, 5 do
-      game:GetService("Workspace").marcusov123123.HumanoidRootPart.CFrame = game:GetService("Workspace").marcusov123123.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(i), 0)
-      wait(.000001)
-      game:GetService("Workspace").marcusov123123.HumanoidRootPart.CFrame = game:GetService("Workspace").WinPaths["Horror Tower"].TouchPart.CFrame
-      wait(.000001)
-  end
+for i = 1, 100 do
+    print("Created by Marcus")
 end
-
 game:GetService("StarterGui"):SetCore("SendNotification",{
     Title = "Created by Marucs",
     Text = "Discord marcusov1",
@@ -44,14 +38,29 @@ local Window = OrionLib:MakeWindow({
     ConfigFolder = "Configs"
 })
 
+for _, player in ipairs(players) do
+    table.insert(playerNames, player.Name)
+end
+
+_G.autoFarm = false
 
 
-
+function auto_Farm()
+    while _G.autoFarm == true do
+        for i = 1, 360, 5 do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(i), 0)
+            wait(.000001)
+            game:GetService("Workspace").Wins.World14.CFrame = HumanoidRootPart.CFrame
+            wait(.000001)
+        end
+        
+    end
+end
 
 local Auto = Window:MakeTab({
-   Name = "Auto",
-   Icon = "rbxassetid://4483345998",
-   PremiumOnly = false
+    Name = "Auto",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
 })
 Auto:AddSection({
 	Name = "Auto:"
@@ -60,10 +69,14 @@ Auto:AddToggle({
 	Name = "Auto Farm",
 	Default = false,
 	Callback = function(Value)
-		  _G.autoFarm = Value
+		_G.autoFarm = Value
         auto_Farm()
 	end    
 })
+
+
+
+
 local Player = Window:MakeTab({
     Name = "Player",
     Icon = "rbxassetid://4483345998",
@@ -122,6 +135,9 @@ Player:AddButton({
   	end
 })
 
+
+
+
 local MiscTab = Window:MakeTab({
     Name = "Misc",
     Icon = "rbxassetid://4483345998",
@@ -153,3 +169,27 @@ MiscTab:AddButton({
   	end    
 })
 
+
+MiscTab:AddSection({
+	Name = "Teleport:"
+})
+
+
+MiscTab:AddDropdown({
+    Name = "Players",
+    Default = playerNames[1] or "No Players",
+    Options = playerNames,
+    Callback = function(selectedplrName)
+        local targetPlayer = plrs:FindFirstChild(selectedplrName)
+        if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            local targetPosition = targetPlayer.Character.HumanoidRootPart.Position
+            local localPlayerRoot = plrs.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+            
+            if localPlayerRoot then
+                localPlayerRoot.CFrame = CFrame.new(targetPosition)
+            end
+        end
+        print(selectedplrName)
+    end    
+})
+OrionLib.Init()
