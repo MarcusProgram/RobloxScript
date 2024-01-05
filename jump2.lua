@@ -1,5 +1,5 @@
 -- game  https://www.roblox.com/games/9834528893/1-Jump-Every-Second
-
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/MarcusProgram/RobloxScript/main/jump2.lua"))()
 --
 --███╗░░░███╗░█████╗░██████╗░██╗░░░██╗░█████╗░░██████╗
 --████╗░████║██╔══██╗██╔══██╗██║░░░██║██╔══██╗██╔════╝
@@ -53,7 +53,6 @@ function auto_Farm()
 end
 
 
-
 local Auto = Window:MakeTab({
     Name = "Auto",
     Icon = "rbxassetid://4483345998",
@@ -67,7 +66,7 @@ Auto:AddToggle({
 	Default = false,
 	Callback = function(Value)
 		_G.autoFarm = Value
-        auto_Farm()
+      auto_Farm()
 	end    
 })
 
