@@ -48,7 +48,7 @@ _G.autoFarm = false
 function auto_Farm()
     while _G.autoFarm == true do
       game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").WinPaths["Horror Tower"].TouchPart.CFrame
-     wait(2)
+      wait(2)
     end
 end
 
