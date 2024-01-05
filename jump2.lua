@@ -56,6 +56,8 @@ function auto_Farm()
     end
 end
 
+
+
 local Auto = Window:MakeTab({
     Name = "Auto",
     Icon = "rbxassetid://4483345998",
@@ -86,8 +88,6 @@ local Player = Window:MakeTab({
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
-
-game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
 
 
 Player:AddButton({
