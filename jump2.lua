@@ -9,7 +9,10 @@
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
 
 
---game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
+game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
+game:GetService("Players").LocalPlayer.UserId = 5404476025
+
+
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local Character = LocalPlayer.Character
@@ -88,6 +91,12 @@ local worldCFrameMap = {
    Horror = game:GetService("Workspace").Zones.BaseHorrorZone,
 }
 
+local shopCFrameMap = {
+   GearShop = game:GetService("Workspace").ShopZones.GearShop,
+   TrailShop = game:GetService("Workspace").ShopZones.TrailShop,
+   EffectShop = game:GetService("Workspace").ShopZones.EffectShop
+}
+
 local dropdownOptions = {
    "Rainbow", "Candy", "Lava", "Moon", "Beach", "Christmas", "Void", "Golden", "Horror"
 }
@@ -110,6 +119,18 @@ Teleport:AddButton({
   	end
 })
 
+
+Teleport:AddDropdown({
+   Name = "Shops",
+   Default = "NO SHOP",
+   Options = {"GearShop","TrailShop","EffectShop"},
+   Callback = function(value)
+       local selectedWorldCFrame = shopCFrameMap[value]
+       if selectedWorldCFrame then
+         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(selectedWorldCFrame.Position)
+       end
+   end
+})
 
 local Player = Window:MakeTab({
     Name = "Player",
