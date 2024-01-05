@@ -76,6 +76,39 @@ local Teleport = Window:MakeTab({
    PremiumOnly = false
 })
 
+local worldCFrameMap = {
+   Rainbow = game:GetService("Workspace").Zones.BaseEarthZone,
+   Candy = game:GetService("Workspace").Zones.BaseCandyZone,
+   Lava = game:GetService("Workspace").Zones.BaseLavaZone,
+   Moon = game:GetService("Workspace").Zones.BaseMoonZone,
+   Beach = game:GetService("Workspace").Zones.BaseBeachZone,
+   Christmas = game:GetService("Workspace").Zones.BaseChristmasZone,
+   Void = game:GetService("Workspace").Zones.BaseVoidZone,
+   Golden = game:GetService("Workspace").Zones.BaseGoldZone,
+   Horror = game:GetService("Workspace").Zones.BaseHorrorZone,
+}
+
+local dropdownOptions = {
+   "Rainbow", "Candy", "Lava", "Moon", "Beach", "Christmas", "Void", "Golden", "Horror"
+}
+
+Teleport:AddDropdown({
+   Name = "Worlds",
+   Default = "Rainbow",
+   Options = dropdownOptions,
+   Callback = function(value)
+       local selectedWorldCFrame = worldCFrameMap[value]
+       if selectedWorldCFrame then
+         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(selectedWorldCFrame.Position)
+       end
+   end
+})
+Teleport:AddButton({
+	Name = "VIP Tower",
+	Callback = function()
+      game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").SpecialZones.VIPTower.CFrame
+  	end
+})
 
 
 local Player = Window:MakeTab({
