@@ -1,4 +1,4 @@
-print(21)
+print(22)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -61,8 +61,8 @@ function auto_Farm()
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame
             wait(3)
         else
-            auto_Farm()
             wait(5)
+            auto_Farm()
         end
     
     end
