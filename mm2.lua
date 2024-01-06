@@ -1,4 +1,4 @@
-print(37)
+print(38)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -55,8 +55,9 @@ function auto_Farm()
     while _G.autoFarm == true do
         if game:GetService("Workspace"):FindFirstChild("Christmas") then 
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame
+            wait(3)
         end
-    	wait(3)
+    
     end
 end
 
@@ -120,8 +121,9 @@ Main:AddButton({
 })
 _G.up = false
 function UpdateChams()
+    while _G.up == true do
     local function CheckItems(player)
-        while _G.up == true do
+        
         local character = player.Character
         local chamsColor = BrickColor.new("White")
         local hasKnife = character:FindFirstChild("Knife") or player.Backpack:FindFirstChild("Knife")
@@ -455,7 +457,6 @@ MiscTab:AddButton({
 
 
 OrionLib.Init()
-
 
 
 
