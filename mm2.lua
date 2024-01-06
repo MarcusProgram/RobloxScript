@@ -1,4 +1,4 @@
-print(36)
+print(37)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -49,26 +49,6 @@ for _, player in ipairs(players) do
 end
 
 
-local Murderer, Sheriff = nil, nil;
-
-function GetMurderer()
-    for i,v in pairs(Players:GetChildren()) do 
-        if v.Backpack:FindFirstChild("Knife") or v.Character:FindFirstChild("Knife") and v.Name == "Tool" then
-            return v.Name;
-        end;
-    end;
-    return nil;
-end;
-
-function GetSheriff()
-    for i,v in pairs(Players:GetChildren()) do 
-        if v.Backpack:FindFirstChild("Gun") or v.Character:FindFirstChild("Gun") and v.Name == "Tool" then
-            return v.Name;
-        end;
-        return nil;
-    end;
-end;
-
 _G.autoFarm = false
 _G.autoFarmXP = false
 function auto_Farm()
@@ -76,9 +56,6 @@ function auto_Farm()
         if game:GetService("Workspace"):FindFirstChild("Christmas") then 
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame
             wait(3)
-        else
-            wait(5)
-            auto_Farm()
         end
     
     end
