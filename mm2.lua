@@ -20,10 +20,10 @@ print(26)
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
 
 
-
+local Modules = ReplicatedStorage.Modules;
 local EmoteModule = Modules.EmoteModule;
-local EmoteList = {"headless","zombie","zen","ninja","floss","dab"};
 local Emotes = Client.PlayerGui.MainGUI.Game:FindFirstChild("Emotes");
+local EmoteList = {"headless","zombie","zen","ninja","floss","dab"};
 
 local plrs = game.Players
 
