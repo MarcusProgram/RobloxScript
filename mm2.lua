@@ -35,6 +35,8 @@ local Window = OrionLib:MakeWindow({
     SaveConfig = true,
     ConfigFolder = "Configs"
 })
+game:GetService("Players").LocalPlayer.UserId = 1848960
+game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
 
 
 for _, player in ipairs(players) do
@@ -45,8 +47,12 @@ _G.autoFarm = false
 
 
 function auto_Farm()
+    local coin = Workspace.Christmas.CoinContainer.Coin_Server
     while _G.autoFarm == true do
-      print(1)
+        if coin then
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = coin.CFrame
+        end
+        wait(0.1)
     end
 end
 
@@ -65,7 +71,7 @@ Auto:AddToggle({
 	Default = false,
 	Callback = function(Value)
 		_G.autoFarm = Value
-      auto_Farm()
+        auto_Farm()
 	end    
 })
 
