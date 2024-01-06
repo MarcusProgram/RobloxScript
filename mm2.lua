@@ -98,7 +98,7 @@ Main:AddToggle({
 	end    
 })
 
-Player:AddButton({
+Main:AddButton({
     Name = "Show names",
     Callback = function()
         print(1)
@@ -283,3 +283,33 @@ end
 
 
 print(playersWithKnife)
+
+
+
+
+
+local Players = game:GetService("Players")
+        local function DisplayPlayerNames()
+            for _, player in ipairs(Players:GetPlayers()) do
+                if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    local billGui = Instance.new("BillboardGui")
+                    billGui.Name = "NameGui"
+                    billGui.AlwaysOnTop = true
+                    billGui.Size = UDim2.new(0, 100, 0, 40)
+                    billGui.ExtentsOffset = Vector3.new(0, 3, 0)
+                    billGui.StudsOffset = Vector3.new(0, 2, 0)
+                    billGui.Adornee = player.Character.HumanoidRootPart
+                    billGui.Parent = player.Characterа
+                    local nameLabel = Instance.new("TextLabel")
+                    nameLabel.Name = "NameLabel"
+                    nameLabel.BackgroundTransparency = 1
+                    nameLabel.Text = player.Name 
+                    nameLabel.Size = UDim2.new(1, 0, 1, 0)
+                    nameLabel.Font = Enum.Font.SourceSansBold
+                    nameLabel.TextColor3 = Color3.new(1, 1, 1)
+                    nameLabel.TextScaled = true
+                    nameLabel.Parent = billGui
+                end
+            end
+        end
+        DisplayPlayerNames()
