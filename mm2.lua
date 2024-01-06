@@ -1,4 +1,4 @@
-print(27)
+print(28)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -19,11 +19,6 @@ print(27)
 --██║░╚═╝░██║██║░░██║██║░░██║╚██████╔╝╚█████╔╝██████╔╝
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
 
-local ReplicatedStorage = game:GetService('ReplicatedStorage');
-local Modules = ReplicatedStorage.Modules;
-local EmoteModule = Modules.EmoteModule;
-local Emotes = Client.PlayerGui.MainGUI.Game:FindFirstChild("Emotes");
-local EmoteList = {"headless","zombie","zen","ninja","floss","dab"};
 
 local plrs = game.Players
 
@@ -213,14 +208,6 @@ Main:AddButton({
 
 
 
-
-
-Main:AddButton({
-    Name = "Get all emotes",
-    Callback = function()
-		require(EmoteModule).GeneratePage(EmoteList,Emotes,'Free Emotes');
-    end
-})
 local Teleport = Window:MakeTab({
    Name = "Teleport",
    Icon = "rbxassetid://4483345998",
