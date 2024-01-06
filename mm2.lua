@@ -112,6 +112,16 @@ local Player = Window:MakeTab({
     PremiumOnly = false
 })
 
+Player:AddButton({
+	Name = "Enable Player List",
+	Callback = function()
+      game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
+  	end
+})
+Player:AddSection({
+	Name = "_______________"
+})
+
 Player:AddSlider({
 	Name = "Walk Speed",
 	Min = 16,
