@@ -1,5 +1,5 @@
--- game  https://www.roblox.com/games/9834528893/1-Jump-Every-Second
--- loadstring(game:HttpGet("https://raw.githubusercontent.com/MarcusProgram/RobloxScript/main/jump2.lua"))()
+-- game https://www.roblox.com/games/142823291/Murder-Mystery-2
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/MarcusProgram/RobloxScript/main/mm2.lua"))()
 --
 --███╗░░░███╗░█████╗░██████╗░██╗░░░██╗░█████╗░░██████╗
 --████╗░████║██╔══██╗██╔══██╗██║░░░██║██╔══██╗██╔════╝
@@ -10,15 +10,6 @@
 
 game:GetService("Players").LocalPlayer.UserId = 5404476025
 game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
-
-local chatrem = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-chatrem:FireServer('MARCUS', "All")
-
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local Character = LocalPlayer.Character
-local HumanoidRootPart = Character.HumanoidRootPart
-local Humanoid = Character.Humanoid
 
 local plrs = game.Players
 
@@ -41,7 +32,7 @@ local Window = OrionLib:MakeWindow({
     SaveConfig = true,
     ConfigFolder = "Configs"
 })
-game:GetService("Players").LocalPlayer.UserId = 33986078
+game:GetService("Players").LocalPlayer.UserId = 1848960
 game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
 
 
@@ -50,38 +41,16 @@ for _, player in ipairs(players) do
 end
 
 _G.autoFarm = false
-_G.autoOpen = false
-_G.delete = false
+
 
 function auto_Farm()
     while _G.autoFarm == true do
-      game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").WinPaths["Horror Tower"].TouchPart.CFrame
-      wait(2)
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = Workspace.Christmas.CoinContainer.Coin_Server.CFrame
+        wait(0.1)
     end
 end
 
-function autoFarmEggs(value)
-   while _G.autoOpen == true do
-      local args = {
-         [1] = workspace:WaitForChild("Eggs"):WaitForChild(value),
-         [2] = false
-     }
-     game:GetService("ReplicatedStorage"):WaitForChild("GlobalFunctions"):WaitForChild("PurchasePet"):FireServer(unpack(args))
-     wait(0.5)
-   end
-end
 
-function delete()
-   while _G.delete == true do
-      local pets = {"Spider", "Witch", "Ghost", "Spook"}
-      local GlobalFunctions = game:GetService("ReplicatedStorage"):WaitForChild("GlobalFunctions")
-
-      for _, pet in ipairs(pets) do
-         GlobalFunctions:WaitForChild("DeletePet"):FireServer(pet)
-      end
-      wait(0.1)
-   end
-end
 
 local Auto = Window:MakeTab({
     Name = "Auto",
@@ -92,95 +61,21 @@ Auto:AddSection({
 	Name = "Auto:"
 })
 Auto:AddToggle({
-	Name = "Auto Farm",
+	Name = "Auto Farm Coin",
 	Default = false,
 	Callback = function(Value)
 		_G.autoFarm = Value
-      auto_Farm()
+        auto_Farm()
 	end    
 })
 
-Auto:AddDropdown({
-   Name = "Open Eggs",
-   Default = "NO EGG",
-   Options = {"NO EGG","Basic", "Nature","Pirate","Spooky"},
-   Callback = function(value)
-       if value == "NO EGG" then
-           _G.autoOpen = false
-       else
-           _G.autoOpen = true
-           autoFarmEggs(value)
-       end
-   end
-})
-Auto:AddToggle({
-	Name = "Delete all unnecessary pets (last egg)",
-	Default = false,
-	Callback = function(Value)
-		_G.delete = Value
-      delete()
-	end    
-})
+
 local Teleport = Window:MakeTab({
    Name = "Teleport",
    Icon = "rbxassetid://4483345998",
    PremiumOnly = false
 })
 
-local worldCFrameMap = {
-   Rainbow = game:GetService("Workspace").Zones.BaseEarthZone,
-   Candy = game:GetService("Workspace").Zones.BaseCandyZone,
-   Lava = game:GetService("Workspace").Zones.BaseLavaZone,
-   Moon = game:GetService("Workspace").Zones.BaseMoonZone,
-   Beach = game:GetService("Workspace").Zones.BaseBeachZone,
-   Christmas = game:GetService("Workspace").Zones.BaseChristmasZone,
-   Void = game:GetService("Workspace").Zones.BaseVoidZone,
-   Golden = game:GetService("Workspace").Zones.BaseGoldZone,
-   Horror = game:GetService("Workspace").Zones.BaseHorrorZone,
-}
-
-local shopCFrameMap = {
-   GearShop = game:GetService("Workspace").ShopZones.GearShop,
-   TrailShop = game:GetService("Workspace").ShopZones.TrailShop,
-   EffectShop = game:GetService("Workspace").ShopZones.EffectShop
-}
-
-local dropdownOptions = {
-   "Rainbow", "Candy", "Lava", "Moon", "Beach", "Christmas", "Void", "Golden", "Horror"
-}
-
-Teleport:AddDropdown({
-   Name = "Worlds",
-   Default = "Rainbow",
-   Options = dropdownOptions,
-   Callback = function(value)
-       local selectedWorldCFrame = worldCFrameMap[value]
-       if selectedWorldCFrame then
-         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(selectedWorldCFrame.Position)
-       end
-   end
-})
-Teleport:AddDropdown({
-   Name = "Shops",
-   Default = "NO SHOP",
-   Options = {"GearShop","TrailShop","EffectShop"},
-   Callback = function(value)
-       local selectedWorldCFrame = shopCFrameMap[value]
-       if selectedWorldCFrame then
-         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(selectedWorldCFrame.Position)
-       end
-   end
-})
-
-
-
-
-Teleport:AddButton({
-	Name = "VIP Tower",
-	Callback = function()
-      game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-215.420578, 6138.28125, 7947.91211, 1, -4.83065392e-08, 0.0002070685, 4.83087028e-08, 1, -1.04280025e-08, -0.0002070685, 1.04380051e-08, 1)
-  	end
-})
 
 Teleport:AddSection({
 	Name = "Teleport:"
@@ -211,18 +106,16 @@ local Player = Window:MakeTab({
     PremiumOnly = false
 })
 
-
-
 Player:AddButton({
 	Name = "Enable Player List",
 	Callback = function()
       game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
   	end
 })
-
 Player:AddSection({
 	Name = "_______________"
 })
+
 Player:AddSlider({
 	Name = "Walk Speed",
 	Min = 16,
@@ -239,7 +132,7 @@ Player:AddSlider({
 Player:AddSlider({
 	Name = "Jump Power",
 	Min = 0,
-	Max = 3000000000,
+	Max = 300,
 	Default = 100,
 	Color = Color3.fromRGB(255,255,255),
 	Increment = 1,
@@ -318,20 +211,7 @@ MiscTab:AddButton({
   	end    
 })
 
-local Fun = Window:MakeTab({
-   Name = "Fun",
-   Icon = "rbxassetid://4483345998",
-   PremiumOnly = false
-})
-Fun:AddButton({
-	Name = "Party Health Bar",
-	Callback = function()
-      game:GetService("Players").LocalPlayer.Character.Humanoid.MaxHealth = 1000
-      while wait(.01) do 
-         local random = Random.new()
-         game:GetService("Players").LocalPlayer.Character.Humanoid.Health = random:NextNumber(100, 1000)
-      end
-  	end    
-})
 
 OrionLib.Init()
+
+
