@@ -49,6 +49,12 @@ function auto_Farm()
             local tweenInfo = TweenInfo.new(3, Enum.EasingStyle.Linear,Enum.EasingDirection.Out )
             local tween = game:GetService("TweenService"):Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame})
             tween:Play()
+        else
+            game:GetService("StarterGui"):SetCore("SendNotification",{
+                Title = "WARNING",
+                Text = "you have to upload to the map",
+                Icon = "rbxassetid://4483345998"
+            })
         end
     end
 end
