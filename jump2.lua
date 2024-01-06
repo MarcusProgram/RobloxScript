@@ -50,6 +50,7 @@ end
 
 _G.autoFarm = false
 _G.autoOpen = false
+_G.delete = false
 
 function auto_Farm()
     while _G.autoFarm == true do
@@ -68,6 +69,16 @@ function autoFarmEggs(value)
    end
 end
 
+function delete()
+   while _G.delete == true do
+      local pets = {"Spider", "Witch", "Ghost", "Spook"}
+      local GlobalFunctions = game:GetService("ReplicatedStorage"):WaitForChild("GlobalFunctions")
+
+      for _, pet in ipairs(pets) do
+         GlobalFunctions:WaitForChild("DeletePet"):FireServer(pet)
+      end   
+   end
+end
 
 local Auto = Window:MakeTab({
     Name = "Auto",
@@ -99,7 +110,14 @@ Auto:AddDropdown({
        end
    end
 })
-
+Auto:AddToggle({
+	Name = "Delete all unnecessary pets (last egg)",
+	Default = false,
+	Callback = function(Value)
+		_G.delete = Value
+      delete()
+	end    
+})
 local Teleport = Window:MakeTab({
    Name = "Teleport",
    Icon = "rbxassetid://4483345998",
@@ -150,6 +168,9 @@ Teleport:AddDropdown({
        end
    end
 })
+
+
+
 
 Teleport:AddButton({
 	Name = "VIP Tower",
