@@ -1,4 +1,4 @@
-print(19)
+print(20)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -85,6 +85,7 @@ function auto_Farm()
             wait(3)
         else
             auto_Farm()
+            wait(5)
         end
     
     end
@@ -92,6 +93,7 @@ end
 function ESP()
     while _G.ESP == true do
         print(1)
+        wait(1)
     end
 end
 
