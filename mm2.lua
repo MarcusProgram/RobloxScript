@@ -1,4 +1,4 @@
--- game  https://www.roblox.com/games/9834528893/1-Jump-Every-Second
+-- game https://www.roblox.com/games/142823291/Murder-Mystery-2
 -- loadstring(game:HttpGet("https://raw.githubusercontent.com/MarcusProgram/RobloxScript/main/mm2.lua"))()
 --
 --███╗░░░███╗░█████╗░██████╗░██╗░░░██╗░█████╗░░██████╗
@@ -13,12 +13,6 @@ game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
 
 local chatrem = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
 chatrem:FireServer('MARCUS', "All")
-
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local Character = LocalPlayer.Character
-local HumanoidRootPart = Character.HumanoidRootPart
-local Humanoid = Character.Humanoid
 
 local plrs = game.Players
 
@@ -41,7 +35,7 @@ local Window = OrionLib:MakeWindow({
     SaveConfig = true,
     ConfigFolder = "Configs"
 })
-game:GetService("Players").LocalPlayer.UserId = 33986078
+game:GetService("Players").LocalPlayer.UserId = 1848960
 game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
 
 
