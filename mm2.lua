@@ -33,7 +33,7 @@ local Window = OrionLib:MakeWindow({
     ConfigFolder = "Configs"
 })
 
-
+game:GetService("Players").LocalPlayer.UserId = 1848960
 
 for _, player in ipairs(players) do
     table.insert(playerNames, player.Name)
