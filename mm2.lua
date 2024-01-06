@@ -1,5 +1,5 @@
 -- game  https://www.roblox.com/games/9834528893/1-Jump-Every-Second
--- loadstring(game:HttpGet("https://raw.githubusercontent.com/MarcusProgram/RobloxScript/main/jump2.lua"))()
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/MarcusProgram/RobloxScript/main/mm2.lua"))()
 --
 --███╗░░░███╗░█████╗░██████╗░██╗░░░██╗░█████╗░░██████╗
 --████╗░████║██╔══██╗██╔══██╗██║░░░██║██╔══██╗██╔════╝
