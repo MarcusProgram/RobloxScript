@@ -19,7 +19,7 @@ print(26)
 --██║░╚═╝░██║██║░░██║██║░░██║╚██████╔╝╚█████╔╝██████╔╝
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
 
-
+local ReplicatedStorage = game:GetService('ReplicatedStorage');
 local Modules = ReplicatedStorage.Modules;
 local EmoteModule = Modules.EmoteModule;
 local Emotes = Client.PlayerGui.MainGUI.Game:FindFirstChild("Emotes");
