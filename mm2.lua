@@ -1,4 +1,4 @@
-print(32)
+print(33)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -125,26 +125,6 @@ Main:AddButton({
     end
 })
 
-
-
-Main:AddToggle({
-    Name = "Chams Update",
-    Default = false,
-    Callback = function(Value)
-        if Value then
-            spawn(function()
-                while true do
-                    wait(3)
-                    UpdateChams()
-                end
-            end)
-        end
-    end
-})
-
-
-
-
 function UpdateChams()
     local function CheckItems(player)
         local character = player.Character
@@ -178,6 +158,26 @@ function UpdateChams()
         end
     end
 end
+
+
+Main:AddToggle({
+    Name = "Chams Update",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            spawn(function()
+                while true do
+                    wait(1)
+                    UpdateChams()
+                end
+            end)
+        end
+    end
+})
+
+
+
+
 
 Main:AddButton({
     Name = "Kill All (Murder)",
