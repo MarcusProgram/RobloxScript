@@ -58,7 +58,10 @@ function auto_Farm()
         if game:GetService("Workspace"):FindFirstChild("Christmas") then 
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame
             wait(3)
+        else
+            auto_Farm()
         end
+    
     end
 end
 function ESP()
