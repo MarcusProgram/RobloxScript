@@ -207,21 +207,6 @@ MiscTab:AddButton({
   	end    
 })
 
-local Fun = Window:MakeTab({
-   Name = "Fun",
-   Icon = "rbxassetid://4483345998",
-   PremiumOnly = false
-})
-Fun:AddButton({
-	Name = "Party Health Bar",
-	Callback = function()
-      game:GetService("Players").LocalPlayer.Character.Humanoid.MaxHealth = 1000
-      while wait(.01) do 
-         local random = Random.new()
-         game:GetService("Players").LocalPlayer.Character.Humanoid.Health = random:NextNumber(100, 1000)
-      end
-  	end    
-})
 
 OrionLib.Init()
 
