@@ -77,7 +77,7 @@ Main:AddToggle({
 	Title = "Murderer ESP",
 	Default = false,
 	Callback = function(state)
-        getgenv().MurderEsp = state;
+        getgenv().MurderEsp = state
         while getgenv().MurderEsp do
             wait()
             pcall(function()
@@ -85,17 +85,17 @@ Main:AddToggle({
                     if v:IsA("BillboardGui") and Players[tostring(v.Name)] then
                         if Players[tostring(v.Name)].Character:FindFirstChild("Knife") or Players[tostring(v.Name)].Backpack:FindFirstChild("Knife")  then
                             if getgenv().MurderEsp then
-                                v.Enabled = true;
+                                v.Enabled = true
                             else
-                                v.Enabled = false;
-                            end;
+                                v.Enabled = false
+                            end
                         end
-                    end;
-                end;
-            end);
-        end;
+                    end
+                end
+            end)
+        end
 	end
-});
+})
 
 
 local Teleport = Window:MakeTab({
