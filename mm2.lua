@@ -1,4 +1,4 @@
-print(25)
+print(26)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -146,8 +146,10 @@ Main:AddToggle({
     end
 })
 
-function UpdateChams()
 
+
+
+function UpdateChams()
     local function CheckItems(player)
         local character = player.Character
         local chamsColor = BrickColor.new("White")
@@ -180,6 +182,38 @@ function UpdateChams()
         end
     end
 end
+
+Main:AddButton({
+    Name = "Kill All (Murder)",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character
+        local backpack = player.Backpack
+        if character and (character:FindFirstChild("Knife") or (backpack and backpack:FindFirstChild("Knife"))) then
+            local players = game.Players:GetPlayers()
+            for _, targetPlayer in ipairs(players) do
+                if targetPlayer ~= player then 
+                    local targetCharacter = targetPlayer.Character
+                    if targetCharacter then
+                        player.Character.HumanoidRootPart.CFrame = targetCharacter.HumanoidRootPart.CFrame
+                        targetPlayer.Character:BreakJoints()
+                    end
+                end
+            end
+        else
+            game:GetService("StarterGui"):SetCore("SendNotification",{
+                Title = "WARNING",
+                Text = "U ARE NOT MURDER",
+                Icon = "rbxassetid://4483345998"
+            })
+        end
+
+    end
+})
+
+
+
+
 
 Main:AddButton({
     Name = "Get all emotes",
@@ -354,7 +388,6 @@ MiscTab:AddButton({
 
 
 OrionLib.Init()
-
 
 
 
