@@ -11,6 +11,8 @@
 game:GetService("Players").LocalPlayer.UserId = 5404476025
 game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
 
+
+
 local plrs = game.Players
 
 local playerNames = {}
@@ -44,9 +46,12 @@ _G.autoFarm = false
 
 
 function auto_Farm()
+    local coin = game:GetService("Workspace").Christmas.CoinContainer["Coin_Server"]
     while _G.autoFarm == true do
-        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer["Coin_Server"].CFrame
-        wait(0.1)
+        if coin then 
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer["Coin_Server"].CFrame
+            wait(0.1)
+        end
     end
 end
 
