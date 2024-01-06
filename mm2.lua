@@ -1,4 +1,3 @@
-
 --я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
 
@@ -18,7 +17,7 @@
 --██║░╚═╝░██║██║░░██║██║░░██║╚██████╔╝╚█████╔╝██████╔╝
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
 
-print(13)
+print(14)
 
 
 local plrs = game.Players
@@ -101,56 +100,27 @@ Player:AddButton({
     Name = "Show names",
     Callback = function()
         local Players = game:GetService("Players")
-        local RunService = game:GetService("RunService")
-        local function CheckPlayerWeapons(player)
-            local hasKnife = player.Character and (player.Character:FindFirstChild("Knife") or player.Backpack:FindFirstChild("Knife"))
-            local hasGun = player.Character and (player.Character:FindFirstChild("Gun") or player.Backpack:FindFirstChild("Gun"))
-            return hasKnife, hasGun
-        end
-        local function UpdatePlayerNames()
-            for _, player in ipairs(Players:GetPlayers()) do
-                if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-                    local billGui = player.Character:FindFirstChild("NameGui")
-                    if billGui then
-                        billGui:Destroy()
-                    end
-                    billGui = Instance.new("BillboardGui")
-                    billGui.Name = "NameGui"
-                    billGui.AlwaysOnTop = true
-                    billGui.Size = UDim2.new(0, 100, 0, 40)
-                    billGui.ExtentsOffset = Vector3.new(0, 3, 0)
-                    billGui.StudsOffset = Vector3.new(0, 2, 0)
-                    billGui.Adornee = player.Character.HumanoidRootPart
-                    billGui.Parent = player.Character
-                    local nameLabel = Instance.new("TextLabel")
-                    nameLabel.Name = "NameLabel"
-                    nameLabel.BackgroundTransparency = 1
-                    nameLabel.Text = player.Name 
-
-                    local hasKnife, hasGun = CheckPlayerWeapons(player)
-
-                    if not hasKnife and not hasGun then
-                        nameLabel.TextColor3 = Color3.new(0, 1, 0)
-                    elseif hasKnife then
-                        nameLabel.TextColor3 = Color3.new(1, 0, 0)
-                    elseif hasGun then
-                        nameLabel.TextColor3 = Color3.new(0, 0, 1)
-                    end
-
-                    nameLabel.Size = UDim2.new(1, 0, 1, 0)
-                    nameLabel.Font = Enum.Font.SourceSansBold
-                    nameLabel.TextScaled = true
-                    nameLabel.Parent = billGui
-                end
+        for _, player in ipairs(Players:GetPlayers()) doи
+            if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                local billGui = Instance.new("BillboardGui")
+                billGui.Name = "NameGui"
+                billGui.AlwaysOnTop = true
+                billGui.Size = UDim2.new(0, 100, 0, 40)
+                billGui.ExtentsOffset = Vector3.new(0, 3, 0)
+                billGui.StudsOffset = Vector3.new(0, 2, 0)
+                billGui.Adornee = player.Character.HumanoidRootPart
+                billGui.Parent = player.Character
+                local nameLabel = Instance.new("TextLabel")
+                nameLabel.Name = "NameLabel"
+                nameLabel.BackgroundTransparency = 1
+                nameLabel.Text = player.Name 
+                nameLabel.Size = UDim2.new(1, 0, 1, 0)
+                nameLabel.Font = Enum.Font.SourceSansBold
+                nameLabel.TextColor3 = Color3.new(1, 1, 1)
+                nameLabel.TextScaled = true
+                nameLabel.Parent = billGui
             end
-        endу
-        local function TogglePlayerNames()
-            RunService.Heartbeat:Connect(function()
-                UpdatePlayerNames()
-            end)
-            UpdatePlayerNames()
         end
-        TogglePlayerNames()
     end
 })
 
