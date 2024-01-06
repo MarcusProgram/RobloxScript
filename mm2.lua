@@ -35,8 +35,6 @@ local Window = OrionLib:MakeWindow({
     SaveConfig = true,
     ConfigFolder = "Configs"
 })
-game:GetService("Players").LocalPlayer.UserId = 1848960
-game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
 
 
 for _, player in ipairs(players) do
