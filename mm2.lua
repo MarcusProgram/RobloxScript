@@ -1,4 +1,4 @@
-print(31)
+print(32)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -231,75 +231,6 @@ Teleport:AddDropdown({
         end
         print(selectedplrName)
     end    
-})
-
-function TeleportToPlayerWithKnife()
-    local player = game.Players.LocalPlayer
-    if not player then
-        return  
-    end
-    local character = player.Character
-    local backpack = player.Backpack
-    if character and (character:FindFirstChild("Knife") or (backpack and backpack:FindFirstChild("Knife"))) then
-        local targetPlayer = nil
-        local players = game.Players:GetPlayers()
-        for _, otherPlayer in ipairs(players) do
-            local otherCharacter = otherPlayer.Character
-            local otherBackpack = otherPlayer.Backpack
-
-            if otherCharacter and (otherCharacter:FindFirstChild("Knife") or (otherBackpack and otherBackpack:FindFirstChild("Knife"))) then
-                targetPlayer = otherPlayer
-                break  
-            end
-        end
-        if targetPlayer then
-            local targetCharacter = targetPlayer.Character
-            if targetCharacter then
-                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFram = targetCharacter.HumanoidRootPart.CFrame
-            end
-        end
-    end
-end
-
-Teleport:AddButton({
-    Name = "Teleport Murder",
-    Callback = TeleportToPlayerWithKnife  
-})
-
-
-
-
-function TeleportToPlayerWithGun()
-    local player = game.Players.LocalPlayer
-    if not player then
-        return  
-    end
-    local character = player.Character
-    local backpack = player.Backpack
-    if character and (character:FindFirstChild("Gun") or (backpack and backpack:FindFirstChild("Gun"))) then
-        local targetPlayer = nil
-        local players = game.Players:GetPlayers()
-        for _, otherPlayer in ipairs(players) do
-            local otherCharacter = otherPlayer.Character
-            local otherBackpack = otherPlayer.Backpack
-
-            if otherCharacter and (otherCharacter:FindFirstChild("Gun") or (otherBackpack and otherBackpack:FindFirstChild("Gun"))) then
-                targetPlayer = otherPlayer
-                break  
-            end
-        end
-        if targetPlayer then
-            local targetCharacter = targetPlayer.Character
-            if targetCharacter then
-                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFram = targetCharacter.HumanoidRootPart.CFrame
-            end
-        end
-    end
-end
-
-Teleport:AddButton({
-    Name = "Teleport Sherif",
-    Callback = TeleportToPlayerWithGun  
 })
 
 local Player = Window:MakeTab({
