@@ -49,13 +49,23 @@ for _, player in ipairs(players) do
 end
 
 _G.autoFarm = false
-
+_G.autoOpen = false
 
 function auto_Farm()
     while _G.autoFarm == true do
       game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").WinPaths["Horror Tower"].TouchPart.CFrame
       wait(2)
     end
+end
+
+function autoFarmEggs(value)
+   while _G.autoOpen == true do
+      local args = {
+         [1] = workspace:WaitForChild("Eggs"):WaitForChild(value),
+         [2] = false
+     }
+     game:GetService("ReplicatedStorage"):WaitForChild("GlobalFunctions"):WaitForChild("PurchasePet"):FireServer(unpack(args))
+   end
 end
 
 
@@ -74,6 +84,20 @@ Auto:AddToggle({
 		_G.autoFarm = Value
       auto_Farm()
 	end    
+})
+
+Auto:AddDropdown({
+   Name = "Open Eggs",
+   Default = "NO EGG",
+   Options = {"NO EGG","Basic", "Nature","Pirate","Spooky"},
+   Callback = function(value)
+       if value == "NO EGG" then
+           _G.autoOpen = false
+       else
+           _G.autoOpen = true
+           autoFarmEggs(value)
+       end
+   end
 })
 
 local Teleport = Window:MakeTab({
