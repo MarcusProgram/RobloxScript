@@ -27,7 +27,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
 local Window = OrionLib:MakeWindow({
-    Name = "Jump Sim by Marcus",
+    Name = "MM2 by Marcus",
     HidePremium = false,
     SaveConfig = true,
     ConfigFolder = "Configs"
@@ -45,7 +45,7 @@ _G.autoFarm = false
 
 function auto_Farm()
     while _G.autoFarm == true do
-        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = Workspace.Christmas.CoinContainer.Coin_Server.CFrame
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer["Coin_Server"].CFrame
         wait(0.1)
     end
 end
