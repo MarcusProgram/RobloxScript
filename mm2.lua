@@ -46,8 +46,9 @@ _G.ESP = false
 function auto_Farm()
     while _G.autoFarm == true do
         if game:GetService("Workspace"):FindFirstChild("Christmas") then 
-            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame
-            wait(0.1)
+            local tweenInfo = TweenInfo.new(3, Enum.EasingStyle.Linear,Enum.EasingDirection.Out )
+            local tween = game:GetService("TweenService"):Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame})
+            tween:Play()
         end
     end
 end
