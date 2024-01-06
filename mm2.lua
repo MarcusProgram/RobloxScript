@@ -42,9 +42,10 @@ for _, player in ipairs(players) do
     table.insert(playerNames, player.Name)
 end
 
+
+
 _G.autoFarm = false
-
-
+_G.ESP = false
 function auto_Farm()
     local coin = game:GetService("Workspace").Christmas.CoinContainer["Coin_Server"]
     while _G.autoFarm == true do
@@ -54,7 +55,11 @@ function auto_Farm()
         end
     end
 end
-
+function ESP()
+    while _G.ESP == true do
+        print(1)
+    end
+end
 
 
 local Main = Window:MakeTab({
@@ -74,28 +79,14 @@ Main:AddToggle({
 	end    
 })
 Main:AddToggle({
-	Title = "Murderer ESP",
+	Name = "Esp All",
 	Default = false,
-	Callback = function(state)
-        getgenv().MurderEsp = state
-        while getgenv().MurderEsp do
-            wait()
-            pcall(function()
-                for i, v in pairs(folder:GetChildren()) do
-                    if v:IsA("BillboardGui") and Players[tostring(v.Name)] then
-                        if Players[tostring(v.Name)].Character:FindFirstChild("Knife") or Players[tostring(v.Name)].Backpack:FindFirstChild("Knife")  then
-                            if getgenv().MurderEsp then
-                                v.Enabled = true
-                            else
-                                v.Enabled = false
-                            end
-                        end
-                    end
-                end
-            end)
-        end
-	end
+	Callback = function(Value)
+		_G.ESP = Value
+        ESP()
+	end    
 })
+
 
 
 local Teleport = Window:MakeTab({
