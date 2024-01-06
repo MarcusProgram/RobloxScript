@@ -11,8 +11,7 @@
 game:GetService("Players").LocalPlayer.UserId = 5404476025
 game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
 
-local chatrem = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
-chatrem:FireServer('MARCUS', "All")
+
 
 local plrs = game.Players
 
@@ -30,7 +29,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
 local Window = OrionLib:MakeWindow({
-    Name = "Jump Sim by Marcus",
+    Name = "MM2 by Marcus",
     HidePremium = false,
     SaveConfig = true,
     ConfigFolder = "Configs"
@@ -47,26 +46,26 @@ _G.autoFarm = false
 
 
 function auto_Farm()
-    local coin = Workspace.Christmas.CoinContainer.Coin_Server
+    local coin = game:GetService("Workspace").Christmas.CoinContainer["Coin_Server"]
     while _G.autoFarm == true do
-        if coin then
-            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = coin.CFrame
+        if coin then 
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer["Coin_Server"].CFrame
+            wait(0.1)
         end
-        wait(0.1)
     end
 end
 
 
 
-local Auto = Window:MakeTab({
-    Name = "Auto",
+local Main = Window:MakeTab({
+    Name = "Main",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
-Auto:AddSection({
-	Name = "Auto:"
+Main:AddSection({
+	Name = "Main:"
 })
-Auto:AddToggle({
+Main:AddToggle({
 	Name = "Auto Farm Coin",
 	Default = false,
 	Callback = function(Value)
@@ -74,6 +73,29 @@ Auto:AddToggle({
         auto_Farm()
 	end    
 })
+Main:AddToggle({
+	Title = "Murderer ESP",
+	Default = false,
+	Callback = function(state)
+        getgenv().MurderEsp = state;
+        while getgenv().MurderEsp do
+            wait()
+            pcall(function()
+                for i, v in pairs(folder:GetChildren()) do
+                    if v:IsA("BillboardGui") and Players[tostring(v.Name)] then
+                        if Players[tostring(v.Name)].Character:FindFirstChild("Knife") or Players[tostring(v.Name)].Backpack:FindFirstChild("Knife")  then
+                            if getgenv().MurderEsp then
+                                v.Enabled = true;
+                            else
+                                v.Enabled = false;
+                            end;
+                        end
+                    end;
+                end;
+            end);
+        end;
+	end
+});
 
 
 local Teleport = Window:MakeTab({
