@@ -46,7 +46,7 @@ _G.autoFarm = false
 
 
 function auto_Farm()
-    local coin = game:GetService("Workspace").Christmas.CoinContainer["Coin_Server"]
+    local coin = Workspace.Christmas.CoinContainer.Coin_Server
     while _G.autoFarm == true do
         if coin then 
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer["Coin_Server"].CFrame
