@@ -249,32 +249,6 @@ Player:AddSlider({
 	end    
 })
 
-Player:AddSlider({
-	Name = "Max Health",
-	Min = 0,
-	Max = 1000,
-	Default = 100,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 1,
-	ValueName = "Mhealth",
-	Callback = function(Value)
-		   game:GetService("Players").LocalPlayer.Character.Humanoid.MaxHealth = Value
-	end    
-})
-Player:AddSlider({
-	Name = "Health",
-	Min = 0,
-	Max = 1000,
-	Default = 100,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 1,
-	ValueName = "Health",
-	Callback = function(Value)
-		game:GetService("Players").LocalPlayer.Character.Humanoid.Health = Value
-	end    
-})
-
-
 Player:AddSection({
 	Name = "_______________"
 })
