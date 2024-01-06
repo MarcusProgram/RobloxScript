@@ -144,8 +144,8 @@ Main:AddButton({
 })
 _G.up = false
 function UpdateChams()
-    while _G.up == true do
     local function CheckItems(player)
+        while _G.up == true do
         local character = player.Character
         local chamsColor = BrickColor.new("White")
         local hasKnife = character:FindFirstChild("Knife") or player.Backpack:FindFirstChild("Knife")
