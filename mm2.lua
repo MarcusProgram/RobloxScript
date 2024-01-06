@@ -10,7 +10,7 @@
 
 game:GetService("Players").LocalPlayer.UserId = 5404476025
 game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
-
+print(10)
 
 
 local plrs = game.Players
@@ -36,7 +36,7 @@ local Window = OrionLib:MakeWindow({
 })
 game:GetService("Players").LocalPlayer.UserId = 1848960
 game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
-wait(1)
+
 
 for _, player in ipairs(players) do
     table.insert(playerNames, player.Name)
@@ -47,9 +47,8 @@ end
 _G.autoFarm = false
 _G.ESP = false
 function auto_Farm()
-    local coin = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server
     while _G.autoFarm == true do
-        if coin then 
+        if game:GetService("Workspace"):FindFirstChild("Christmas") then 
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame
             wait(0.1)
         end
@@ -58,7 +57,6 @@ end
 function ESP()
     while _G.ESP == true do
         print(1)
-	wait(1)
     end
 end
 
