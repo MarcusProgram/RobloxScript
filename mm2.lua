@@ -1,4 +1,4 @@
-print(35)
+print(36)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -49,7 +49,25 @@ for _, player in ipairs(players) do
 end
 
 
+local Murderer, Sheriff = nil, nil;
 
+function GetMurderer()
+    for i,v in pairs(Players:GetChildren()) do 
+        if v.Backpack:FindFirstChild("Knife") or v.Character:FindFirstChild("Knife") and v.Name == "Tool" then
+            return v.Name;
+        end;
+    end;
+    return nil;
+end;
+
+function GetSheriff()
+    for i,v in pairs(Players:GetChildren()) do 
+        if v.Backpack:FindFirstChild("Gun") or v.Character:FindFirstChild("Gun") and v.Name == "Tool" then
+            return v.Name;
+        end;
+        return nil;
+    end;
+end;
 
 _G.autoFarm = false
 _G.autoFarmXP = false
@@ -124,8 +142,9 @@ Main:AddButton({
         end
     end
 })
-
+_G.up = false
 function UpdateChams()
+    while _G.up == true do
     local function CheckItems(player)
         local character = player.Character
         local chamsColor = BrickColor.new("White")
@@ -158,21 +177,16 @@ function UpdateChams()
         end
     end
 end
+end
 
 
 Main:AddToggle({
     Name = "Chams Update",
     Default = false,
     Callback = function(Value)
-        if Value then
-            spawn(function()
-                while true do
-                    wait(1)
-                    UpdateChams()
-                end
-            end)
-        end
-    end
+		_G.up = Value
+        UpdateChams()
+	end    
 })
 
 
