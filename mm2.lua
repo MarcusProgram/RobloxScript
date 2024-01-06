@@ -36,7 +36,7 @@ local Window = OrionLib:MakeWindow({
 })
 game:GetService("Players").LocalPlayer.UserId = 1848960
 game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
-
+wait(1)
 
 for _, player in ipairs(players) do
     table.insert(playerNames, player.Name)
