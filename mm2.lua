@@ -1,4 +1,4 @@
-print(14)
+print(15)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -102,27 +102,30 @@ Player:AddButton({
     Name = "Show names",
     Callback = function()
         local Players = game:GetService("Players")
-        for _, player in ipairs(Players:GetPlayers()) doи
-            if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-                local billGui = Instance.new("BillboardGui")
-                billGui.Name = "NameGui"
-                billGui.AlwaysOnTop = true
-                billGui.Size = UDim2.new(0, 100, 0, 40)
-                billGui.ExtentsOffset = Vector3.new(0, 3, 0)
-                billGui.StudsOffset = Vector3.new(0, 2, 0)
-                billGui.Adornee = player.Character.HumanoidRootPart
-                billGui.Parent = player.Character
-                local nameLabel = Instance.new("TextLabel")
-                nameLabel.Name = "NameLabel"
-                nameLabel.BackgroundTransparency = 1
-                nameLabel.Text = player.Name 
-                nameLabel.Size = UDim2.new(1, 0, 1, 0)
-                nameLabel.Font = Enum.Font.SourceSansBold
-                nameLabel.TextColor3 = Color3.new(1, 1, 1)
-                nameLabel.TextScaled = true
-                nameLabel.Parent = billGui
+        local function DisplayPlayerNames()
+            for _, player in ipairs(Players:GetPlayers()) do
+                if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    local billGui = Instance.new("BillboardGui")
+                    billGui.Name = "NameGui"
+                    billGui.AlwaysOnTop = true
+                    billGui.Size = UDim2.new(0, 100, 0, 40)
+                    billGui.ExtentsOffset = Vector3.new(0, 3, 0)
+                    billGui.StudsOffset = Vector3.new(0, 2, 0)
+                    billGui.Adornee = player.Character.HumanoidRootPart
+                    billGui.Parent = player.Characterа
+                    local nameLabel = Instance.new("TextLabel")
+                    nameLabel.Name = "NameLabel"
+                    nameLabel.BackgroundTransparency = 1
+                    nameLabel.Text = player.Name 
+                    nameLabel.Size = UDim2.new(1, 0, 1, 0)
+                    nameLabel.Font = Enum.Font.SourceSansBold
+                    nameLabel.TextColor3 = Color3.new(1, 1, 1)
+                    nameLabel.TextScaled = true
+                    nameLabel.Parent = billGui
+                end
             end
         end
+        DisplayPlayerNames()
     end
 })
 
