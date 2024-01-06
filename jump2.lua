@@ -333,10 +333,15 @@ MiscTab:AddButton({
 MiscTab:AddButton({
 	Name = "Remote Spy",
 	Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/bCghX33W", true))()
+  	end    
+})
+MiscTab:AddButton({
+	Name = "Remote Spy 2.0",
+	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
   	end    
 })
-
 
 local Fun = Window:MakeTab({
    Name = "Fun",
