@@ -1,4 +1,4 @@
-print(23)
+print(24)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -204,6 +204,21 @@ Player:AddSlider({
 	end    
 })
 
+
+Player:AddSlider({
+	Name = "Gravity",
+	Min = 0,
+	Max = 500,
+	Default = 196,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Gravity",
+	Callback = function(Value)
+		game:GetService("Workspace").Gravity = Value
+	end    
+})
+
+
 Player:AddSection({
 	Name = "_______________"
 })
@@ -276,3 +291,67 @@ MiscTab:AddButton({
 
 OrionLib.Init()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Main:AddToggle({
+    Name = "Chams Update",
+    Default = false,
+    Callback = function(Value)
+        if Value then
+            spawn(function()
+                while true do
+                    wait(10)
+                    UpdateChams()
+                end
+            end)
+        end
+    end
+})
+
+function UpdateChams()
+
+    local function CheckItems(player)
+        local character = player.Character
+        local chamsColor = BrickColor.new("White")
+        local hasKnife = character:FindFirstChild("Knife") or player.Backpack:FindFirstChild("Knife")
+        local hasGun = character:FindFirstChild("Gun") or player.Backpack:FindFirstChild("Gun")
+
+        if hasKnife then
+            chamsColor = BrickColor.new("Really red")
+        elseif hasGun then
+            chamsColor = BrickColor.new("Bright blue")
+        end
+
+        if character:FindFirstChild("Chams") then
+            character.Chams.BrickColor = chamsColor
+        else
+            local chams = Instance.new("BoxHandleAdornment")
+            chams.Name = "Chams"
+            chams.Size = character:GetExtentsSize()
+            chams.AlwaysOnTop = true
+            chams.ZIndex = 10
+            chams.Color3 = chamsColor.Color
+            chams.Transparency = 0.5
+            chams.Adornee = character
+            chams.Parent = character
+        end
+    end
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        if player.Character then
+            CheckItems(player)
+        end
+    end
+end
