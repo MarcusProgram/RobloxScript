@@ -1,4 +1,4 @@
-print(30)
+print(31)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -67,9 +67,10 @@ function auto_Farm()
 end
 
 function auto_Farm_XP()
-    while wait(1) do
+    while _G.autoFarmXP == true do
     game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-99.3635483, 162.194336, 39.1691856, -0.087949343, 8.68945591e-08, -0.996124923, 9.88126914e-10, 1, 8.71453523e-08, 0.996124923, 6.68007871e-09, -0.087949343)
-    end
+    wait(1)
+end
 end
 
 
