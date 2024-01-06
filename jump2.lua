@@ -66,6 +66,7 @@ function autoFarmEggs(value)
          [2] = false
      }
      game:GetService("ReplicatedStorage"):WaitForChild("GlobalFunctions"):WaitForChild("PurchasePet"):FireServer(unpack(args))
+     wait(0.5)
    end
 end
 
@@ -76,7 +77,8 @@ function delete()
 
       for _, pet in ipairs(pets) do
          GlobalFunctions:WaitForChild("DeletePet"):FireServer(pet)
-      end   
+      end
+      wait(0.1)
    end
 end
 
