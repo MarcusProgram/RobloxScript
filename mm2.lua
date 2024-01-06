@@ -1,4 +1,4 @@
-print(22)
+print(23)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -54,7 +54,6 @@ end
 
 
 _G.autoFarm = false
-_G.ESP = false
 function auto_Farm()
     while _G.autoFarm == true do
         if game:GetService("Workspace"):FindFirstChild("Christmas") then 
@@ -92,15 +91,6 @@ Main:AddToggle({
         auto_Farm()
 	end    
 })
-Main:AddToggle({
-	Name = "Esp All",
-	Default = false,
-	Callback = function(Value)
-		_G.ESP = Value
-        ESP()
-	end    
-})
-
 Main:AddButton({
     Name = "Show names",
     Callback = function()
@@ -127,7 +117,12 @@ Main:AddButton({
         end
     end
 })
-
+Main:AddButton({
+    Name = "Get all emotes",
+    Callback = function()
+		require(EmoteModule).GeneratePage(EmoteList,Emotes,'Free Emotes');
+    end
+})
 local Teleport = Window:MakeTab({
    Name = "Teleport",
    Icon = "rbxassetid://4483345998",
@@ -206,19 +201,6 @@ Player:AddSlider({
 	ValueName = "JPower",
 	Callback = function(Value)
 		game:GetService("Players").LocalPlayer.Character.Humanoid.JumpPower = Value
-	end    
-})
-
-Player:AddSlider({
-	Name = "Gravity",
-	Min = 0,
-	Max = 300,
-	Default = 100,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 1,
-	ValueName = "Grav",
-	Callback = function(Value)
-		game:GetService("Players").LocalPlayer.Character.Humanoid.Gravity = Value
 	end    
 })
 
