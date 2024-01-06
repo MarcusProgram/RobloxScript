@@ -11,7 +11,8 @@
 game:GetService("Players").LocalPlayer.UserId = 5404476025
 game:GetService("Players").LocalPlayer.Character.Humanoid:TakeDamage(1000)
 
-
+local chatrem = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+chatrem:FireServer('MARCUS', "All")
 
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
@@ -333,15 +334,10 @@ MiscTab:AddButton({
 MiscTab:AddButton({
 	Name = "Remote Spy",
 	Callback = function()
-        loadstring(game:HttpGet("https://pastebin.com/raw/bCghX33W", true))()
-  	end    
-})
-MiscTab:AddButton({
-	Name = "Remote Spy 2.0",
-	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/78n/SimpleSpy/main/SimpleSpySource.lua"))()
   	end    
 })
+
 
 local Fun = Window:MakeTab({
    Name = "Fun",
