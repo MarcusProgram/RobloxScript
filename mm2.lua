@@ -1,4 +1,4 @@
-print(38)
+print(40)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -51,6 +51,28 @@ end
 
 _G.autoFarm = false
 _G.autoFarmXP = false
+
+function getMurder()
+    local players = game.Players:GetPlayers()
+    for _, player in ipairs(players) do
+        local knife = player.Character and (player.Character:FindFirstChild("Knife") or player.Backpack:FindFirstChild("Knife"))
+        if knife then
+            return player.Character:FindFirstChild("HumanoidRootPart")
+        end
+    end
+    return nil
+end
+function getSheriff()
+    local players = game.Players:GetPlayers()
+    for _, player in ipairs(players) do
+        local gun = player.Character and (player.Character:FindFirstChild("Gun") or player.Backpack:FindFirstChild("Gun"))
+        if gun then
+            return player.Character:FindFirstChild("HumanoidRootPart")
+        end
+    end
+    return nil
+end
+
 function auto_Farm()
     while _G.autoFarm == true do
         if game:GetService("Workspace"):FindFirstChild("Christmas") then 
@@ -193,7 +215,20 @@ Teleport:AddDropdown({
         print(selectedplrName)
     end    
 })
-
+Teleport:AddButton({
+	Name = "To Murder",
+	Callback = function()
+      local mur = getMurder()
+      game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame=mur.CFrame
+  	end
+})
+Teleport:AddButton({
+	Name = "To Sheriff",
+	Callback = function()
+      local sher = getSheriff()
+      game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame=sher.CFrame
+  	end
+})
 local Player = Window:MakeTab({
     Name = "Player",
     Icon = "rbxassetid://4483345998",
@@ -457,6 +492,12 @@ MiscTab:AddButton({
 
 
 OrionLib.Init()
+
+
+
+
+
+
 
 
 
