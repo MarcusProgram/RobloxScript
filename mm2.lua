@@ -18,7 +18,7 @@
 --██║░╚═╝░██║██║░░██║██║░░██║╚██████╔╝╚█████╔╝██████╔╝
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
 
-print(11)
+print(12)
 
 
 local plrs = game.Players
@@ -56,10 +56,8 @@ _G.ESP = false
 function auto_Farm()
     while _G.autoFarm == true do
         if game:GetService("Workspace"):FindFirstChild("Christmas") then 
-            local tweenInfo = TweenInfo.new(3, Enum.EasingStyle.Linear,Enum.EasingDirection.Out )
-            local tween = game:GetService("TweenService"):Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame})
-            tween:Play()
-	    wait(1)
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame
+            wait(3)
         end
     end
 end
