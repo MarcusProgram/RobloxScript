@@ -1,3 +1,13 @@
+
+--я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
+
+
+
+
+
+
+
+
 -- game https://www.roblox.com/games/142823291/Murder-Mystery-2
 -- loadstring(game:HttpGet("https://raw.githubusercontent.com/MarcusProgram/RobloxScript/main/mm2.lua"))()
 --
