@@ -58,6 +58,7 @@ end
 function ESP()
     while _G.ESP == true do
         print(1)
+	wait(1)
     end
 end
 
