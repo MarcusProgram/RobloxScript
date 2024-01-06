@@ -128,7 +128,7 @@ Player:AddSlider({
 Player:AddSlider({
 	Name = "Jump Power",
 	Min = 0,
-	Max = 3000000000,
+	Max = 300,
 	Default = 100,
 	Color = Color3.fromRGB(255,255,255),
 	Increment = 1,
