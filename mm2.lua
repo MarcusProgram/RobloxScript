@@ -49,6 +49,7 @@ function auto_Farm()
             local tweenInfo = TweenInfo.new(3, Enum.EasingStyle.Linear,Enum.EasingDirection.Out )
             local tween = game:GetService("TweenService"):Create(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart, tweenInfo, {CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame})
             tween:Play()
+	    wait(1)
         end
     end
 end
