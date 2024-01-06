@@ -134,7 +134,28 @@ Teleport:AddButton({
   	end
 })
 
+Teleport:AddSection({
+	Name = "Teleport:"
+})
 
+
+Teleport:AddDropdown({
+    Name = "Players",
+    Default = playerNames[1] or "No Players",
+    Options = playerNames,
+    Callback = function(selectedplrName)
+        local targetPlayer = plrs:FindFirstChild(selectedplrName)
+        if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            local targetPosition = targetPlayer.Character.HumanoidRootPart.Position
+            local localPlayerRoot = plrs.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+            
+            if localPlayerRoot then
+                localPlayerRoot.CFrame = CFrame.new(targetPosition)
+            end
+        end
+        print(selectedplrName)
+    end    
+})
 
 local Player = Window:MakeTab({
     Name = "Player",
@@ -270,29 +291,6 @@ MiscTab:AddButton({
 })
 
 
-MiscTab:AddSection({
-	Name = "Teleport:"
-})
-
-
-MiscTab:AddDropdown({
-    Name = "Players",
-    Default = playerNames[1] or "No Players",
-    Options = playerNames,
-    Callback = function(selectedplrName)
-        local targetPlayer = plrs:FindFirstChild(selectedplrName)
-        if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-            local targetPosition = targetPlayer.Character.HumanoidRootPart.Position
-            local localPlayerRoot = plrs.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-            
-            if localPlayerRoot then
-                localPlayerRoot.CFrame = CFrame.new(targetPosition)
-            end
-        end
-        print(selectedplrName)
-    end    
-})
-
 local Fun = Window:MakeTab({
    Name = "Fun",
    Icon = "rbxassetid://4483345998",
@@ -310,4 +308,3 @@ Fun:AddButton({
 })
 
 OrionLib.Init()
-
