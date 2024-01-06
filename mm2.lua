@@ -1,4 +1,4 @@
-print(24)
+print(25)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -21,6 +21,9 @@ print(24)
 
 
 
+local EmoteModule = Modules.EmoteModule;
+local EmoteList = {"headless","zombie","zen","ninja","floss","dab"};
+local Emotes = Client.PlayerGui.MainGUI.Game:FindFirstChild("Emotes");
 
 local plrs = game.Players
 
@@ -54,6 +57,7 @@ end
 
 
 _G.autoFarm = false
+_G.autoFarmXP = false
 function auto_Farm()
     while _G.autoFarm == true do
         if game:GetService("Workspace"):FindFirstChild("Christmas") then 
@@ -66,13 +70,12 @@ function auto_Farm()
     
     end
 end
-function ESP()
-    while _G.ESP == true do
-        print(1)
-        wait(1)
+
+function auto_Farm_XP()
+    while wait(1) do
+    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-99.3635483, 162.194336, 39.1691856, -0.087949343, 8.68945591e-08, -0.996124923, 9.88126914e-10, 1, 8.71453523e-08, 0.996124923, 6.68007871e-09, -0.087949343)
     end
 end
-
 
 
 local Main = Window:MakeTab({
@@ -89,6 +92,14 @@ Main:AddToggle({
 	Callback = function(Value)
 		_G.autoFarm = Value
         auto_Farm()
+	end    
+})
+Main:AddToggle({
+	Name = "Auto Farm XP",
+	Default = false,
+	Callback = function(Value)
+		_G.autoFarmXP = Value
+        auto_Farm_XP()
 	end    
 })
 Main:AddButton({
@@ -127,7 +138,7 @@ Main:AddToggle({
         if Value then
             spawn(function()
                 while true do
-                    wait(10)
+                    wait(3)
                     UpdateChams()
                 end
             end)
