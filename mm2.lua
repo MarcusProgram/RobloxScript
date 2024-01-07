@@ -1,4 +1,4 @@
-print(47)
+print(48)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -48,6 +48,7 @@ game:GetService("Players").LocalPlayer.UserId = 1848960
 for _, player in ipairs(players) do
     table.insert(playerNames, player.Name)
 end
+table.insert(playerNames, "No Players")
 
 
 _G.autoFarm = false
@@ -533,28 +534,32 @@ local Fun = Window:MakeTab({
 })
 
 
-Teleport:AddDropdown({
+Fun:AddDropdown({
     Name = "Fuck Player",
     Default = "No Players",
     Options = playerNames,
     Callback = function(selectedplrName)
-        local targetPlayer = plrs:FindFirstChild(selectedplrName)
-        if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-            local targetPosition = targetPlayer.Character.HumanoidRootPart.Position
-            local localPlayerRoot = plrs.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-            
-            if localPlayerRoot then
-                local notfunny = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(stupid)
-                notfunny:Play()
-                notfunny:AdjustSpeed(10)
-                while hummy.Parent.Parent ~= nil do
-                    wait()
-                    localPlayerRoot.CFrame = CFrame.new(targetPosition)
-                end
+        if selectedplrName ~= "No Players" then
+            local targetPlayer = plrs:FindFirstChild(selectedplrName)
+            if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                local targetPosition = targetPlayer.Character.HumanoidRootPart.Position
+                local localPlayerRoot = plrs.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
                 
+                if localPlayerRoot then
+                    local notfunny = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(stupid)
+                    notfunny:Play()
+                    notfunny:AdjustSpeed(10)
+                    while hummy.Parent.Parent ~= nil do
+                        wait()
+                        localPlayerRoot.CFrame = CFrame.new(targetPosition)
+                    end
+                    
+                end
             end
+            print(selectedplrName)
+        else
+            notfunny:Stop()
         end
-        print(selectedplrName)
     end    
 })
 OrionLib.Init()
