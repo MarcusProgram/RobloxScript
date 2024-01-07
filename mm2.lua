@@ -1,4 +1,4 @@
-print(50)
+print(46)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -147,6 +147,12 @@ Main:AddButton({
                     teleportTo(otherPlayer)
                 end
             end
+        else
+            game:GetService("StarterGui"):SetCore("SendNotification",{
+                Title = "WARNING",
+                Text = "U ARE NOT MURDER",
+                Icon = "rbxassetid://4483345998"
+            })
         end
   	end
 })
