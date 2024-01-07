@@ -194,10 +194,18 @@ Main:AddToggle({
 Main:AddButton({
 	Name = "Pick Gun",
 	Callback = function()
+        if game:GetService("Workspace"):FindFirstChild("GunDrop") then
         local pos = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").GunDrop.CFrame
         wait(0.1)
         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+        else
+            game:GetService("StarterGui"):SetCore("SendNotification",{
+                Title = "WARNING",
+                Text = "GUN NOT DROPPED",
+                Icon = "rbxassetid://4483345998"
+            })
+        end 
   	end
 })
 
@@ -518,15 +526,3 @@ MiscTab:AddButton({
 
 
 OrionLib.Init()
-
-
-
-
-
-
-
-
-
-
-
-
