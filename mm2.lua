@@ -1,4 +1,4 @@
-print(46)
+print(47)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -197,7 +197,7 @@ function UpdateChams()
         wait()
     end
 end
-Player:AddSection({
+Main:AddSection({
 	Name = "turn it on only after the game starts"
 })
 
