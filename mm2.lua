@@ -1,4 +1,4 @@
-print(46)
+print(50)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -90,6 +90,11 @@ function auto_Farm_XP()
     wait(1)
 end
 end
+function teleportTo(target)
+    local humanoidRootPart = player.Character.HumanoidRootPart
+    local targetPosition = target.Character.HumanoidRootPart.Position
+    humanoidRootPart.CFrame = CFrame.new(targetPosition)
+end
 
 
 local Main = Window:MakeTab({
@@ -131,6 +136,18 @@ Main:AddButton({
                 Icon = "rbxassetid://4483345998"
             })
         end 
+  	end
+})
+Main:AddButton({
+	Name = "Kill All (Murder)",
+	Callback = function()
+        if  game:GetService("Players").LocalPlayer.Character:FindFirstChild("Knife") or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Knife") then
+            for _, otherPlayer in pairs(game.Players:GetPlayers()) do
+                if otherPlayer ~= player then
+                    teleportTo(otherPlayer)
+                end
+            end
+        end
   	end
 })
 
