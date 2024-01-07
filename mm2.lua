@@ -1,4 +1,4 @@
-print(42)
+print(43)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -19,7 +19,7 @@ print(42)
 --██║░╚═╝░██║██║░░██║██║░░██║╚██████╔╝╚█████╔╝██████╔╝
 --╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝░╚═════╝░░╚════╝░╚═════╝░
 
-
+    
 local plrs = game.Players
 
 local playerNames = {}
@@ -141,58 +141,65 @@ Main:AddButton({
         end
     end
 })
-_G.up = false
+
+local isUpdating = false
+local chamsColor = BrickColor.new("White")
 
 function UpdateChams()
-    while _G.up == true do
-        local function CheckItems(player)
-            local character = player.Character
-            local chamsColor = BrickColor.new("White")
-            local hasKnife = (character:FindFirstChild("Knife") or player.Backpack:FindFirstChild("Knife")) and chamsColor ~= BrickColor.new("Really red")
-            local hasGun = (character:FindFirstChild("Gun") or player.Backpack:FindFirstChild("Gun")) and chamsColor ~= BrickColor.new("Bright blue")
-
-            if hasKnife then
-                chamsColor = BrickColor.new("Really red")
-            elseif hasGun then
-                chamsColor = BrickColor.new("Bright blue")
-            end
-
-            if character:FindFirstChild("Chams") then
-                character.Chams.BrickColor = chamsColor
-            else
-                local chams = Instance.new("BoxHandleAdornment")
-                chams.Name = "Chams"
-                chams.Size = character:GetExtentsSize()
-                chams.AlwaysOnTop = true
-                chams.ZIndex = 10
-                chams.Color3 = chamsColor.Color
-                chams.Transparency = 0.5
-                chams.Adornee = character
-                chams.Parent = character
-            end
-        end
-
+    while isUpdating do
         for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
-            if player.Character then
-                CheckItems(player)
+            local character = player.Character
+            if character then
+                local hasKnife = (character:FindFirstChild("Knife") or player.Backpack:FindFirstChild("Knife")) and chamsColor ~= BrickColor.new("Really red")
+                local hasGun = (character:FindFirstChild("Gun") or player.Backpack:FindFirstChild("Gun")) and chamsColor ~= BrickColor.new("Bright blue")
+
+                if hasKnife then
+                    chamsColor = BrickColor.new("Really red")
+                elseif hasGun then
+                    chamsColor = BrickColor.new("Bright blue")
+                else
+                    chamsColor = BrickColor.new("White")
+                end
+
+                if character:FindFirstChild("Chams") then
+                    character.Chams.BrickColor = chamsColor
+                else
+                    local chams = Instance.new("BoxHandleAdornment")
+                    chams.Name = "Chams"
+                    chams.Size = character:GetExtentsSize()
+                    chams.AlwaysOnTop = true
+                    chams.ZIndex = 10
+                    chams.Color3 = chamsColor.Color
+                    chams.Transparency = 0.5
+                    chams.Adornee = character
+                    chams.Parent = character
+                end
             end
         end
-        wait(1)
+        wait()
     end
 end
 
 
 Main:AddToggle({
     Name = "Chams Update",
-    Default = false,
     Callback = function(Value)
-        _G.up = Value
+        isUpdating = Value
         if Value then
             UpdateChams()
         end
-    end    
+    end
 })
 
+Teleport:AddButton({
+	Name = "Pick Gun",
+	Callback = function()
+        local pos = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").GunDrop.CFrame
+        wait(0.1)
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+  	end
+})
 
 
 local Teleport = Window:MakeTab({
