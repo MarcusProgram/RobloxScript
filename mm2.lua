@@ -297,7 +297,7 @@ Player:AddButton({
 Player:AddButton({
 	Name = "To be dead",
 	Callback = function()
-        game:GetService("Workspace").marcusov123123.Humanoid.Sit = true
+        game:GetService("Players").LocalPlayer.Character.Humanoid.Sit = true
   	end
 })
 
