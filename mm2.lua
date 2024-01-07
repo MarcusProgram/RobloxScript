@@ -1,4 +1,4 @@
-print(41)
+print(42)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -77,8 +77,9 @@ function auto_Farm()
     while _G.autoFarm == true do
         if game:GetService("Workspace"):FindFirstChild("Christmas") then 
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame
+            wait(3)
         end
-    	wait(3)
+    
     end
 end
 
@@ -141,41 +142,43 @@ Main:AddButton({
     end
 })
 _G.up = false
+
 function UpdateChams()
     while _G.up == true do
-    local function CheckItems(player)
-        
-        local character = player.Character
-        local chamsColor = BrickColor.new("White")
-        local hasKnife = character:FindFirstChild("Knife") or player.Backpack:FindFirstChild("Knife")
-        local hasGun = character:FindFirstChild("Gun") or player.Backpack:FindFirstChild("Gun")
+        local function CheckItems(player)
+            local character = player.Character
+            local chamsColor = BrickColor.new("White")
+            local hasKnife = (character:FindFirstChild("Knife") or player.Backpack:FindFirstChild("Knife")) and chamsColor ~= BrickColor.new("Really red")
+            local hasGun = (character:FindFirstChild("Gun") or player.Backpack:FindFirstChild("Gun")) and chamsColor ~= BrickColor.new("Bright blue")
 
-        if hasKnife then
-            chamsColor = BrickColor.new("Really red")
-        elseif hasGun then
-            chamsColor = BrickColor.new("Bright blue")
+            if hasKnife then
+                chamsColor = BrickColor.new("Really red")
+            elseif hasGun then
+                chamsColor = BrickColor.new("Bright blue")
+            end
+
+            if character:FindFirstChild("Chams") then
+                character.Chams.BrickColor = chamsColor
+            else
+                local chams = Instance.new("BoxHandleAdornment")
+                chams.Name = "Chams"
+                chams.Size = character:GetExtentsSize()
+                chams.AlwaysOnTop = true
+                chams.ZIndex = 10
+                chams.Color3 = chamsColor.Color
+                chams.Transparency = 0.5
+                chams.Adornee = character
+                chams.Parent = character
+            end
         end
 
-        if character:FindFirstChild("Chams") then
-            character.Chams.BrickColor = chamsColor
-        else
-            local chams = Instance.new("BoxHandleAdornment")
-            chams.Name = "Chams"
-            chams.Size = character:GetExtentsSize()
-            chams.AlwaysOnTop = true
-            chams.ZIndex = 10
-            chams.Color3 = chamsColor.Color
-            chams.Transparency = 0.5
-            chams.Adornee = character
-            chams.Parent = character
+        for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+            if player.Character then
+                CheckItems(player)
+            end
         end
+        wait(1)
     end
-    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
-        if player.Character then
-            CheckItems(player)
-        end
-    end
-end
 end
 
 
@@ -183,11 +186,12 @@ Main:AddToggle({
     Name = "Chams Update",
     Default = false,
     Callback = function(Value)
-		_G.up = Value
-        UpdateChams()
-	end    
+        _G.up = Value
+        if Value then
+            UpdateChams()
+        end
+    end    
 })
-
 
 
 
