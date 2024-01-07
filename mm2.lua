@@ -1,4 +1,4 @@
-print(44)
+print(45)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -77,9 +77,8 @@ function auto_Farm()
     while _G.autoFarm == true do
         if game:GetService("Workspace"):FindFirstChild("Christmas") then 
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame
-            
         end
-   	 wait(3)
+    wait(3)
     end
 end
 
@@ -115,6 +114,24 @@ Main:AddToggle({
         auto_Farm_XP()
 	end    
 })
+Main:AddButton({
+	Name = "Pick Gun",
+	Callback = function()
+        if game:GetService("Workspace"):FindFirstChild("GunDrop") then
+        local pos = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").GunDrop.CFrame
+        wait(0.1)
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+        else
+            game:GetService("StarterGui"):SetCore("SendNotification",{
+                Title = "WARNING",
+                Text = "GUN NOT DROPPED",
+                Icon = "rbxassetid://4483345998"
+            })
+        end 
+  	end
+})
+
 Main:AddButton({
     Name = "Show names",
     Callback = function()
@@ -179,7 +196,9 @@ function UpdateChams()
         wait()
     end
 end
-
+Player:AddSection({
+	Name = "turn it on only after the game starts"
+})
 
 Main:AddToggle({
     Name = "Chams Update",
@@ -191,23 +210,6 @@ Main:AddToggle({
     end
 })
 
-Main:AddButton({
-	Name = "Pick Gun",
-	Callback = function()
-        if game:GetService("Workspace"):FindFirstChild("GunDrop") then
-        local pos = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
-        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").GunDrop.CFrame
-        wait(0.1)
-        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
-        else
-            game:GetService("StarterGui"):SetCore("SendNotification",{
-                Title = "WARNING",
-                Text = "GUN NOT DROPPED",
-                Icon = "rbxassetid://4483345998"
-            })
-        end 
-  	end
-})
 
 
 local Teleport = Window:MakeTab({
