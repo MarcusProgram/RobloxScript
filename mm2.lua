@@ -77,9 +77,9 @@ function auto_Farm()
     while _G.autoFarm == true do
         if game:GetService("Workspace"):FindFirstChild("Christmas") then 
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Christmas.CoinContainer.Coin_Server.CFrame
-            wait(3)
+            
         end
-    
+   	 wait(3)
     end
 end
 
