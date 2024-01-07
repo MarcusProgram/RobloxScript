@@ -1,4 +1,4 @@
-print(43)
+print(44)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -191,7 +191,7 @@ Main:AddToggle({
     end
 })
 
-Teleport:AddButton({
+Main:AddButton({
 	Name = "Pick Gun",
 	Callback = function()
         local pos = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position
