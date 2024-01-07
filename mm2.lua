@@ -1,4 +1,4 @@
-print(40)
+print(41)
 
 -- я не кодирую свой код и не ставлю ключи потому что я не 3,14дорас, берите код кто хочет и черпайте знаний
 
@@ -219,14 +219,30 @@ Teleport:AddButton({
 	Name = "To Murder",
 	Callback = function()
       local mur = getMurder()
-      game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame=mur.CFrame
+      if mur ~= nil then
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame=mur.CFrame
+      else
+        game:GetService("StarterGui"):SetCore("SendNotification",{
+            Title = "WARNING",
+            Text = "He's gone or it's you",
+            Icon = "rbxassetid://4483345998"
+        })
+      end
   	end
 })
 Teleport:AddButton({
 	Name = "To Sheriff",
 	Callback = function()
       local sher = getSheriff()
+      if sher ~= nil then
       game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame=sher.CFrame
+      else
+        game:GetService("StarterGui"):SetCore("SendNotification",{
+            Title = "WARNING",
+            Text = "He's gone or it's you",
+            Icon = "rbxassetid://4483345998"
+        })
+      end
   	end
 })
 local Player = Window:MakeTab({
