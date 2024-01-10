@@ -1,4 +1,3 @@
--- YouTube: darkModz
 local IGNOREIFINANTIEXPLOIT = Instance.new("ScreenGui")
 local Border = Instance.new("ImageLabel")
 local Frame = Instance.new("ImageLabel")
